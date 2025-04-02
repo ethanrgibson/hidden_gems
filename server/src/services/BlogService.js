@@ -1,5 +1,5 @@
 import { dbContext } from "../db/DbContext.js"
-import { BadRequest } from "../utils/Errors.js"
+import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class BlogService {
 
@@ -35,6 +35,23 @@ class BlogService {
 
     await blogUpdated.save()
     return blogUpdated
+
+  }
+
+  async deleteBlogById(blogId, userInfo) {
+
+    const blog = await dbContext.Blogs.findById(blogId)
+
+    if (blog.creatorId != userInfo.id) {
+      throw new Forbidden('YOU ARE NOT ALLOWED TO DELETE A BLOG CREATED BY ANOTHER USER')
+    }
+
+    if (blog.id == null) { return 'Blog Does Not Exist' }
+
+    await blog.deleteOne()
+
+
+    return `Blog Deleted!`
 
   }
 

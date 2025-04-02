@@ -12,6 +12,7 @@ export class BlogsController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createBlog)
       .put('/:blogId', this.editBlogById)
+      .delete('/:blogId', this.deleteBlogById)
 
 
   }
@@ -40,30 +41,43 @@ export class BlogsController extends BaseController {
     }
   }
 
-async getBlogById(request, response, next){
+  async getBlogById(request, response, next) {
 
-  try {
-    const blogId = request.params.blogId
-    const blog = await blogService.getBlogById(blogId)
-    response.send(blog)
-  } catch (error) {
-    next(error)
+    try {
+      const blogId = request.params.blogId
+      const blog = await blogService.getBlogById(blogId)
+      response.send(blog)
+    } catch (error) {
+      next(error)
+    }
+
   }
 
-}
+  async editBlogById(request, response, next) {
+    try {
+      const blogId = request.params.blogId
+      const blogData = request.body
+      const userInfo = request.userInfo
+      const blog = await blogService.editBlogById(blogId, blogData, userInfo)
+      response.send(blog)
+    } catch (error) {
+      next(error)
+    }
+  }
 
-async editBlogById(request, response, next){
-try {
-  const blogId = request.params.blogId
-  const blogData = request.body
-  const userInfo = request.userInfo
-  const blog = await blogService.editBlogById(blogId, blogData, userInfo)
-  response.send(blog)
-} catch (error) {
-  next(error)
-}
 
-}
+  async deleteBlogById(request, response, next) {
 
+    try {
+
+      const blogId = request.params.blogId
+      const userInfo = request.userInfo
+      const message = await blogService.deleteBlogById(blogId, userInfo)
+      response.send(message)
+    } catch (error) {
+      next(error)
+    }
+
+  }
 
 }
