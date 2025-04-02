@@ -96,4 +96,10 @@
 
 
 }
+
+.activity-tile {
+  min-height: 40dvh;
+  object-position: center;
+  object-fit: cover;
+}
 </style>
