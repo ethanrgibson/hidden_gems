@@ -69,6 +69,5 @@ a {
 }
 .logo{
   filter: invert(55%) sepia(76%) saturate(1433%) hue-rotate(351deg) brightness(101%) contrast(101%);
- 
 }
 </style>
