@@ -9,11 +9,21 @@
   <section class="container-fluid">
     <div class="row ">
       <div class="col-12 px-0">
-        <div class="background-img">
-          <div class="text-white-shadow">
+        <div class="background-img d-flex justify-content-end align-items-center px-4 ">
+          <div class="text-white-shadow px-5">
             <h1 class="">Hidden gems</h1>
             <span class="">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Blanditiis, maiores.</span>
           </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="my-3 p-2">
+        <div class="border-bottom border-warning">
+          <h2>Find Your Next Gem</h2>
+        </div>
+        <div class="mt-2 fs-4 pb-3">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa laborum commodi unde porro quae odio aperiam optio quo. Inventore fugit dolore rem quia error corrupti earum blanditiis sequi a dolor.</p>
         </div>
       </div>
     </div>
