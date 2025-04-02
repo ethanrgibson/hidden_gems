@@ -76,10 +76,18 @@
         nesciunt modi impedit numquam odio laboriosam ad minus autem eos non corporis ullam quis itaque necessitatibus
         delectus dicta quidem tenetur iusto ducimus eveniet ut. Voluptatum qui vel iure.</p>
     </div>
-  </div>
-
-
-
+    <div class="col-12">
+      <div class="my-3 p-2">
+        <div class="border-bottom border-warning">
+          <h2>Find Your Next Gem</h2>
+        </div>
+        <div class="mt-2 fs-4 pb-3">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa laborum commodi unde porro quae odio aperiam
+            optio quo. Inventore fugit dolore rem quia error corrupti earum blanditiis sequi a dolor.</p>
+        </div>
+      </div>
+    </div>
+    </section>
 </template>
 
 <style scoped lang="scss">
