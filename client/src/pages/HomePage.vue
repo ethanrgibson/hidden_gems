@@ -3,6 +3,8 @@
 
 </script>
 
+
+<!-- TODO import bg image from local storage -->
 <template>
   <div class="text-center">
     <h1>Blog Name</h1>
