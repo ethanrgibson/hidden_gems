@@ -33,7 +33,9 @@
         <div class="campfire d-flex justify-content-start pt-4 ">
           <div class="text-white-shadow px-5">
             <h1 class="py-2">Come Join the Campfire</h1>
-            <button class="btn btn-warning">See What Everyone is Saying</button>
+            <RouterLink :to="{ name: 'Campfire' }">
+              <button class="btn btn-warning">See What Everyone is Saying</button>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -107,10 +109,5 @@
   object-position: center;
   object-fit: cover;
 }
-
-.activity-tile {
-  min-height: 40dvh;
-  object-position: center;
-  object-fit: cover;
-}
 </style>
+<style scoped lang="scss"></style>
