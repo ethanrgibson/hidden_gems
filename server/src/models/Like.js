@@ -9,8 +9,13 @@ export const LikeSchema = new Schema(
     accountId: { type: Schema.ObjectId, required: true, ref: 'Account' },
     otherId: { type: Schema.ObjectId, required: true },
     type: { type: String, enum: ['Location', 'Account', 'Blog', 'BlogPicture'] }
+  },
+  {
+    toJSON: { virtuals: true }
   }
 )
+
+
 
 const otherOptions = {
   localField: 'otherId',
@@ -18,6 +23,7 @@ const otherOptions = {
   justOne: true
 }
 
+// NOTE -  creator of the like (the one who is liking)
 LikeSchema.virtual('creator',
   {
     ...otherOptions,
@@ -33,6 +39,8 @@ LikeSchema.virtual('blog',
   }
 )
 
+
+// NOTE - the account recieveing the like (or the followers)
 LikeSchema.virtual('account',
   {
     ...otherOptions,
@@ -41,14 +49,14 @@ LikeSchema.virtual('account',
 )
 LikeSchema.virtual('location',
   {
-...otherOptions,
-ref: 'Location'
+    ...otherOptions,
+    ref: 'Location'
   }
 )
 LikeSchema.virtual('blogPicture',
 
   {
-...otherOptions,
-ref: 'blogPicture'
+    ...otherOptions,
+    ref: 'blogPicture'
   }
 )
