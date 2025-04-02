@@ -76,7 +76,7 @@
         nesciunt modi impedit numquam odio laboriosam ad minus autem eos non corporis ullam quis itaque necessitatibus
         delectus dicta quidem tenetur iusto ducimus eveniet ut. Voluptatum qui vel iure.</p>
     </div>
-    </section>
+
 </template>
 
 <style scoped lang="scss">

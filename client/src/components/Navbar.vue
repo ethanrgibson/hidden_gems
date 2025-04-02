@@ -41,6 +41,9 @@ watch(theme, () => {
 
                   <span type="button" class="nav-link bg-orange text-light ">The Campfire</span>
                 </RouterLink>
+                =======
+                <span type="button" class="nav-link bg-orange text-light ">The Campfire</span>
+                >>>>>>> 8b628b2 (super basic nav bar)
               </li>
               <li class="nav-item bg-blue">
                 <span type="button" class="nav-link text-light">Camping</span>
