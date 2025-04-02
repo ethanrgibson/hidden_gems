@@ -87,6 +87,59 @@
         </div>
       </div>
     </div>
+    <div class="row justify-content-center">
+      <div class="col-12 px-0 campfire-bg">
+        <div class="campfire d-flex justify-content-start pt-4 ">
+          <div class="text-white-shadow px-5">
+            <h1 class="py-2">Come Join the Campfire</h1>
+            <RouterLink :to="{ name: 'Campfire' }">
+              <button class="btn btn-warning">See What Everyone is Saying</button>
+            </RouterLink>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="border-bottom border-warning my-3 p-2 text-end">
+          <h2>Explore With Others</h2>
+        </div>
+      </div>
+      <div class="col-md-7 py-3">
+        <div class="d-flex align-items-center justify-content-between bg-light shadow p-4">
+          <div>
+            <img class="img-fluid activity-tile"
+              src="https://images.unsplash.com/photo-1621412847056-259b014ef157?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTEyfHxjYW1waW5nfGVufDB8MHwwfHx8Mg%3D%3D"
+              alt="">
+          </div>
+          <div class="text-center">
+            <h3>Camping</h3>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 py-3">
+        <div class="d-flex align-items-center justify-content-between bg-light shadow p-4">
+          <div class="text-center">
+            <h3>Hiking</h3>
+          </div>
+          <div>
+            <img class="img-fluid activity-tile"
+              src="https://images.unsplash.com/photo-1551632811-561732d1e306?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aGlraW5nfGVufDB8MHwwfHx8Mg%3D%3D"
+              alt="">
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 py-3">
+        <div class="d-flex align-items-center justify-content-between bg-light shadow p-4">
+          <div>
+            <img class="img-fluid activity-tile"
+              src="https://images.unsplash.com/photo-1636138105136-a86084b4e1d9?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8b3ZlcmxhbmR8ZW58MHwwfDB8fHwy"
+              alt="">
+          </div>
+          <div class="text-center">
+            <h3>Overland</h3>
+          </div>
+        </div>
+      </div>
+    </div>
     </section>
 </template>
 
@@ -108,12 +161,15 @@
 .text-white-shadow {
   text-shadow: 1px 1px 5px black;
   color: white;
+<<<<<<< HEAD
 }
 
 .activity-tile {
   min-height: 40dvh;
   object-position: center;
   object-fit: cover;
+=======
+>>>>>>> b266c76 (that shit right here)
 }
 
 .activity-tile {
