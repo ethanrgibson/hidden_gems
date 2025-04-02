@@ -28,7 +28,10 @@ watch(theme, () => {
       <!-- collapse button -->
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <span type="button" class="nav-link bg-orange text-light ">The Campfire</span>
+          <RouterLink :to="{name: 'Campfire'}">
+
+            <span type="button" class="nav-link bg-orange text-light ">The Campfire</span>
+          </RouterLink>
         </li>
         <li class="nav-item bg-blue">
           <span type="button" class="nav-link text-light">Camping</span>
