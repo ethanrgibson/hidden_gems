@@ -32,7 +32,9 @@
           <div class="campfire d-flex justify-content-start pt-4 ">
             <div class="text-white-shadow px-5">
               <h1 class="py-2">Come Join the Campfire</h1>
-              <button class="btn btn-warning">See What Everyone is Saying</button>
+              <RouterLink :to="{name: 'Campfire'}">
+                <button class="btn btn-warning">See What Everyone is Saying</button>
+              </RouterLink>
             </div>
           </div>
         </div>
