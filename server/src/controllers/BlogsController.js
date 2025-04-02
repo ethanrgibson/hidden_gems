@@ -11,6 +11,7 @@ export class BlogsController extends BaseController {
       .get('/:blogId', this.getBlogById)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createBlog)
+      .put('/:blogId', this.editBlogById)
 
 
   }
@@ -51,6 +52,18 @@ async getBlogById(request, response, next){
 
 }
 
+async editBlogById(request, response, next){
+try {
+  const blogId = request.params.blogId
+  const blogData = request.body
+  const userInfo = request.userInfo
+  const blog = await blogService.editBlogById(blogId, blogData, userInfo)
+  response.send(blog)
+} catch (error) {
+  next(error)
+}
+
+}
 
 
 }
