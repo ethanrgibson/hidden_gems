@@ -1,13 +1,13 @@
 $body-bg: #fff;
 $body-bg-dark: #1b1f22;
 $theme-colors: (
-  "primary": #0e6efd,
+  "primary": #27187E,
   "secondary": #aeb2b6,
-  "success": #198754,
+  "success": #636B2F,
   "info": #0ccaf0,
-  "warning": #ffc105,
+  "warning": #FF8811,
   "danger": #dc3545,
-  "dark": #212529,
+  "dark": #000000,
   "light": #f8f9fa,
   "body-bg": #fff,
   // Bootstrap extended colors
@@ -24,6 +24,6 @@ $theme-colors: (
   "teal": $teal,
   "cyan":$cyan,
   // Custom colors
-  "codeworks": #141d2b,
+  "camp": #6290C3,
   "vue": #42b883,
 );
