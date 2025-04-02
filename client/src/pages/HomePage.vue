@@ -7,6 +7,7 @@
 <!-- TODO import bg image from local storage -->
 <template>
 <<<<<<< HEAD
+<<<<<<< HEAD
   <div class="text-center">
     <h1>Blog Name</h1>
   </div>
@@ -146,6 +147,9 @@
 =======
   <p>Hidden Gems forever</p>
 >>>>>>> 7c024f4 (Home Page Place Holder)
+=======
+  <p>heyo</p>
+>>>>>>> b683fa9 (super basic nav bar)
 </template>
 
 <style scoped lang="scss">
