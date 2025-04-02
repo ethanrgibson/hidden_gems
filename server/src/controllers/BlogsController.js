@@ -7,6 +7,7 @@ export class BlogsController extends BaseController {
   constructor() {
     super('api/blogs')
     this.router
+    .get('', this.getAllBlogs)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createBlog)
 
@@ -27,5 +28,14 @@ export class BlogsController extends BaseController {
 
   }
 
+
+  async getAllBlogs(request, response, next) {
+    try {
+      const blogs = await blogService.getAllBlogs()
+      response.send(blogs)
+    } catch (error) {
+      next(error)
+    }
+  }
 
 }
