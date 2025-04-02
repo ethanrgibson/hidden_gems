@@ -1,6 +1,6 @@
 import { Schema } from "mongoose"
 
-export const BlogLocationSchema = new Schema(
+export const blogLocationSchema = new Schema(
 
   {
     locationId: { type: Schema.ObjectId, required: true, ref: 'Location' },
