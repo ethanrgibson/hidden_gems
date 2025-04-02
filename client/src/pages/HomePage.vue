@@ -6,7 +6,7 @@
 
 <!-- TODO import bg image from local storage -->
 <template>
-  <section class="container-fluid">
+  <section class="container-fluid bg-light ">
     <div class="row ">
       <div class="col-12 px-0">
         <div class="title-bg-img d-flex justify-content-end align-items-center px-4 ">
