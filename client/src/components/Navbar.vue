@@ -16,7 +16,7 @@ watch(theme, () => {
 
 </script>
 
-<template >
+<template>
   <nav class=" text-light navbar navbar-expand-md bg-dark border-bottom border-warning">
     <div class="container-fluid gap-2">
       <div>
