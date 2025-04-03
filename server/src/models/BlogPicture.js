@@ -4,8 +4,9 @@ export const blogPictureSchema = new Schema(
 
 
   {
-    imgUrl: { type: String, required: true, minLength: 1, maxLength: 2000 },
-    blogId: { type: Schema.ObjectId, required: true, ref: 'Blog' }
+    creatorId: { type: Schema.ObjectId, required: true, ref: 'Account' },
+    blogId: { type: Schema.ObjectId, required: true, ref: 'Blog' },
+    imgUrl: { type: String, required: true, minLength: 1, maxLength: 2000 }
   },
 
   {
@@ -18,26 +19,10 @@ export const blogPictureSchema = new Schema(
 blogPictureSchema.virtual('creator',
 
   {
-    localField: '_id',
-    foreignField: 'creatorId',
+    localField: 'creatorId',
+    foreignField: '_id',
     ref: 'Account',
     justOne: true
   }
-
-
-)
-
-blogPictureSchema.virtual('blog',
-
-
-  {
-
-    localField: 'blogId',
-    foreignField: '_id',
-    ref: 'Blog',
-    justOne: true
-
-  }
-
 
 )
