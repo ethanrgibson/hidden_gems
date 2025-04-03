@@ -27,18 +27,26 @@ async function getAllBlogs() {
 
 <template>
   <section class="container-fluid ">
-    <div class="row ">
+    <div class="row campfire-bg">
       <div class="col-12">
-        <div class="campfire-bg">
-        </div>
+          <div class="">
+          </div>
       </div>
     </div>
-    <div class="row">
-        <!-- NOTE copying our Code Emperor Jake's style of using the first character -->
-        <div v-for="b in blogs" :key="b.id" class="col-md-8">
-          <BlogCard :blogProp="b"/>
+      <div class="row">
+        <div class="col-12 d-flex">
+          <div class="col-4 d-flex flex-column flex-grow-1">saDASDa</div>
+          <div class="col-md-8">
+            <div class="row">
+              <div v-for="b in blogs" :key="b.id" class="col-12">
+                <BlogCard :blogProp="b"/>
+              </div>
+
+            </div>
+          </div>
+          <!-- NOTE copying our Code Emperor Jake's style of using the first character -->
         </div>
-      </div>
+        </div>
   </section>
 </template>
 
