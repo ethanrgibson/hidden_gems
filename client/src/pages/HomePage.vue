@@ -141,6 +141,7 @@
       </div>
     </div>
     </section>
+  </div>
 </template>
 
 <style scoped lang="scss">
