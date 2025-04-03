@@ -12,27 +12,19 @@ defineProps({
     <div class="px-1 ">
       <img class="activity-tile  " :src="blogProp.coverImg" :alt="'a picture for ' + blogProp.creator.name + `'s' post`">
     </div>
-    <div class="">
+    <div class="w-100">
       <div class="border-bottom border-warning mb-2">
         <h3>{{ blogProp.title }}</h3>
       </div>
       <div class="d-flex px-2 justify-content-bottom align-items-baseline gap-2  ">
         <img class=" profile-img" :src="blogProp.creator.picture" alt="">
-        <div class="d-flex align-items-baseline justify-content-end">
-          <div>
+        <div class="d-flex pt-2 flex-fill align-items-baseline justify-content-between">
             <span class="fs-4">{{ blogProp.creator.name }}</span>
-          </div>
-          <div>
-            <span>Published: {{ blogProp.createdAt.toLocaleDateString() }}</span>
-          </div>
+            <span class="text-gray">Published: {{ blogProp.createdAt.toLocaleDateString() }}</span>
         </div>
       </div>
-      <div>
-        
-        <span></span>
-      </div>
-      <div>
-        <p>{{ blogProp.body }}</p>
+      <div class="pt-3 ">
+        <p><i>{{ blogProp.body }}</i></p>
       </div>
     </div>
   </div>
