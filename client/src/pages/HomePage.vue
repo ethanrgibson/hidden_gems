@@ -6,7 +6,7 @@
 
 <!-- TODO import bg image from local storage -->
 <template>
-  <section class="container bg-light ">
+  <section class="container-fluid bg-light ">
     <div class="row ">
       <div class="col-12 px-0">
         <div class="title-bg-img d-flex justify-content-end align-items-center px-4 ">
@@ -31,7 +31,7 @@
       <div class="col-12 px-0 campfire-bg">
           <div class="campfire d-flex justify-content-start pt-4 ">
             <div class="text-white-shadow px-5">
-              <h1 class="py-2">Come Join the Campfire</h1>
+              <h1 class="border-bottom border-warning py-2">Come Join the Campfire</h1>
               <RouterLink :to="{name: 'Campfire'}">
                 <button class="btn btn-warning">See What Everyone is Saying</button>
               </RouterLink>

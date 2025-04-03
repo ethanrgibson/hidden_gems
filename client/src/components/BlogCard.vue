@@ -10,12 +10,16 @@ defineProps({
 <template>
   <div>
     <div>
-      <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FtcGluZ3xlbnwwfHwwfHx8MA%3D%3D" :alt="'a picture for ' + blogProp + `'s' post`">
+      <img class="activity-tile" :src="blogProp.coverImg" :alt="'a picture for ' + blogProp.creator.name + `'s' post`">
     </div>
   </div>
 </template>
 
 
 <style lang="scss" scoped>
-
+.activity-tile{
+  max-height: 40dvh;
+  object-position: center;
+  object-fit: cover;
+}
 </style>

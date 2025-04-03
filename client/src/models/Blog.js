@@ -8,6 +8,10 @@ export class Blog {
     this.isPublished = data.isPublished
     this.creator = data.creator
     this.creator = data.creator
+    this.category = data.category
+    this.createdAt = new Date(data.createdAt)
+    this.updatedAt = new Date(data.updatedAt)
+
 
   }
 }

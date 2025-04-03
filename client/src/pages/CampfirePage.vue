@@ -30,18 +30,16 @@ async function getAllBlogs() {
     <div class="row ">
       <div class="col-12">
         <div class="campfire-bg">
-
         </div>
       </div>
     </div>
     <div class="row">
-      <!-- NOTE copying our Code Emperor Jake's  style of using the first character -->
+      <!-- NOTE copying our Code Emperor Jake's style of using the first character -->
       <div v-for="b in blogs" :key="b.id" class="col-8">
-        <BlogCard :blogProps="b"/>
+        <BlogCard :blogProp="b"/>
       </div>
     </div>
   </section>
-<div>{{ blogs }}</div>
 </template>
 
 
@@ -52,4 +50,5 @@ async function getAllBlogs() {
   background-size: cover;
   min-height: 75dvh;
 }
+
 </style>
