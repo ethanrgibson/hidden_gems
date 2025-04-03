@@ -13,7 +13,7 @@ defineProps({
       <img class="activity-tile  " :src="blogProp.coverImg" :alt="'a picture for ' + blogProp.creator.name + `'s' post`">
     </div>
     <div class="w-100">
-      <div class="border-bottom border-warning mb-2">
+      <div class="border-bottom border-5 border-warning mb-2">
         <h3>{{ blogProp.title }}</h3>
       </div>
       <div class="d-flex px-2 justify-content-bottom align-items-baseline gap-2  ">
