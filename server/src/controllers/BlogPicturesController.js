@@ -28,6 +28,7 @@ export class BlogPicturesController extends BaseController {
 
   }
 
+  
   async deletePicture(request, response, next) {
     try {
       const blogPictureId = request.params.blogPictureId
