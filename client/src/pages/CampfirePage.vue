@@ -34,11 +34,11 @@ async function getAllBlogs() {
       </div>
     </div>
     <div class="row">
-      <!-- NOTE copying our Code Emperor Jake's style of using the first character -->
-      <div v-for="b in blogs" :key="b.id" class="col-8">
-        <BlogCard :blogProp="b"/>
+        <!-- NOTE copying our Code Emperor Jake's style of using the first character -->
+        <div v-for="b in blogs" :key="b.id" class="col-md-8">
+          <BlogCard :blogProp="b"/>
+        </div>
       </div>
-    </div>
   </section>
 </template>
 
