@@ -1,16 +1,26 @@
 import { dbContext } from "../db/DbContext.js"
 import { BadRequest, Forbidden } from "../utils/Errors.js"
+import { blogService } from "./BlogService.js"
 
 class BlogPicturesService {
 
   async getBlogPicturesById(blogId) {
     const pictures = await dbContext.blogPictures.find({ blogId: blogId })
+
     return pictures
   }
 
-  async uploadPictures(pictureData) {
+  async uploadPictures(pictureData, userInfo) {
+
+    const blog = await blogService.getBlogById(pictureData.blogId)
+
+    if (blog.creatorId != userInfo.id) {
+      throw new Forbidden('YOU CANNOT ADD PICTURES TO A BLOG POST YOU DID NOT WRITE')
+    }
+
     const pictures = await dbContext.blogPictures.create(pictureData)
     await pictures.populate('creator', 'name picture')
+
     return pictures
   }
 

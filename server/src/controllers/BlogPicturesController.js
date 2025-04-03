@@ -20,7 +20,7 @@ export class BlogPicturesController extends BaseController {
       const pictureData = request.body
       const userInfo = request.userInfo
       pictureData.creatorId = userInfo.id
-      const pictures = await blogPicturesService.uploadPictures(pictureData)
+      const pictures = await blogPicturesService.uploadPictures(pictureData, userInfo.id)
       response.send(pictures)
     } catch (error) {
       next(error)
@@ -28,7 +28,7 @@ export class BlogPicturesController extends BaseController {
 
   }
 
-  
+
   async deletePicture(request, response, next) {
     try {
       const blogPictureId = request.params.blogPictureId
