@@ -140,7 +140,6 @@
         </div>
       </div>
     </div>
-    </section>
 </template>
 
 <style scoped lang="scss">
@@ -161,14 +160,12 @@
 .text-white-shadow {
   text-shadow: 1px 1px 5px black;
   color: white;
-  <<<<<<< HEAD
 }
 
 .activity-tile {
   min-height: 40dvh;
   object-position: center;
   object-fit: cover;
-  =======>>>>>>>b266c76 (that shit right here)
 }
 
 .activity-tile {
