@@ -28,10 +28,12 @@ class BlogService {
     if (blogUpdated.creatorId != userInfo.id) {
       throw new BadRequest('YOU CANNOT EDIT A BLOG YOU DID NOT CREATE')
     }
-    blogUpdated.title = blogData.title
-    blogUpdated.body = blogData.body
-    blogUpdated.coverImg = blogData.coverImg
-    blogUpdated.category = blogData.category
+    blogUpdated.title = blogData.title ?? blogUpdated.title
+    blogUpdated.body = blogData.body ?? blogUpdated.body
+    blogUpdated.coverImg = blogData.coverImg ?? blogUpdated.coverImg
+    blogUpdated.category = blogData.category ?? blogUpdated.category
+    blogUpdated.isPublished = blogData.isPublished ?? blogUpdated.isPublished
+
 
     await blogUpdated.save()
     return blogUpdated
@@ -41,16 +43,12 @@ class BlogService {
   async deleteBlogById(blogId, userInfo) {
 
     const blog = await dbContext.Blogs.findById(blogId)
-
     if (blog.creatorId != userInfo.id) {
       throw new Forbidden('YOU ARE NOT ALLOWED TO DELETE A BLOG CREATED BY ANOTHER USER')
     }
 
     if (blog.id == null) { return 'Blog Does Not Exist' }
-
     await blog.deleteOne()
-
-
     return `Blog Deleted!`
 
   }

@@ -11,7 +11,8 @@ export const LikeSchema = new Schema(
     type: { type: String, enum: ['Location', 'Account', 'Blog', 'BlogPicture'] }
   },
   {
-    toJSON: { virtuals: true }
+    toJSON: { virtuals: true },
+    timestamps: true
   }
 )
 

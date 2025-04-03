@@ -14,7 +14,8 @@ export const BlogSchema = new Schema(
   },
 
   {
-    toJSON: { virtuals: true }
+    toJSON: { virtuals: true },
+    timestamps: true
   }
 
 
@@ -27,7 +28,8 @@ BlogSchema.virtual('creator',
     foreignField: '_id',
     ref: 'Account',
     justOne: true
-  }
+  },
 )
+
 
 

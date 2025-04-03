@@ -4,11 +4,14 @@ export const blogPictureSchema = new Schema(
 
 
   {
+    creatorId: { type: Schema.ObjectId, required: true, ref: 'Account' },
+    blogId: { type: Schema.ObjectId, required: true, ref: 'Blog' },
     imgUrl: { type: String, required: true, minLength: 1, maxLength: 2000 }
   },
 
   {
-    toJSON: { virtuals: true }
+    toJSON: { virtuals: true },
+    timestamps: true
   }
 
 )
@@ -16,11 +19,10 @@ export const blogPictureSchema = new Schema(
 blogPictureSchema.virtual('creator',
 
   {
-    localField: '_id',
-    foreignField: 'creatorId',
+    localField: 'creatorId',
+    foreignField: '_id',
     ref: 'Account',
     justOne: true
   }
-
 
 )

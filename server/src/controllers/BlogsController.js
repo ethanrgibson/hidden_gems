@@ -1,6 +1,7 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import BaseController from "../utils/BaseController.js";
 import { blogService } from "../services/BlogService.js";
+import { blogPicturesService } from "../services/BlogPicturesService.js";
 
 export class BlogsController extends BaseController {
 
@@ -9,6 +10,7 @@ export class BlogsController extends BaseController {
     this.router
       .get('', this.getAllBlogs)
       .get('/:blogId', this.getBlogById)
+      .get('/:blogId/pictures', this.getBlogPicturesByBlogId)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createBlog)
       .put('/:blogId', this.editBlogById)
@@ -77,7 +79,20 @@ export class BlogsController extends BaseController {
     } catch (error) {
       next(error)
     }
-
   }
+
+  async getBlogPicturesByBlogId(request, response, next) {
+
+    try {
+
+      const blogId = request.params.blogId
+      const pictures = await blogPicturesService.getBlogPicturesById(blogId)
+      response.send(pictures)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+
 
 }
