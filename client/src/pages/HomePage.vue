@@ -140,7 +140,7 @@
         </div>
       </div>
     </div>
-    </section>
+
   </div>
 </template>
 
