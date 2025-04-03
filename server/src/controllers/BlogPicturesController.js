@@ -10,6 +10,7 @@ export class BlogPicturesController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.uploadPictures)
+      .delete('/:blogPictureId', this.deletePicture)
 
 
   }
@@ -25,6 +26,17 @@ export class BlogPicturesController extends BaseController {
       next(error)
     }
 
+  }
+
+  async deletePicture(request, response, next) {
+    try {
+      const blogPictureId = request.params.blogPictureId
+      const userInfo = request.userInfo
+      const blog = await blogPicturesService.deletePicture(blogPictureId, userInfo)
+      response.send(blog)
+    } catch (error) {
+      next(error)
+    }
   }
 
 }
