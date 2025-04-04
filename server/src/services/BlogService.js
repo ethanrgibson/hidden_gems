@@ -11,7 +11,7 @@ class BlogService {
 
 
   async getAllBlogs() {
-    const blogs = await dbContext.Blogs.find().populate('creator', 'name picture')
+    const blogs = await dbContext.Blogs.find().populate('creator', 'name picture').populate('likeCount')
     return blogs
   }
 
