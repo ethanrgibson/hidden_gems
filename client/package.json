@@ -13,7 +13,6 @@
     "@bcwdev/auth0provider-client": "0.1.12",
     "@mdi/font": "7.4.47",
     "@popperjs/core": "2.11.8",
-    "@wysimark/vue": "^3.0.20",
     "@vueup/vue-quill": "^1.2.0",
     "axios": "^1.8.4",
     "bootstrap": "5.3.3",
