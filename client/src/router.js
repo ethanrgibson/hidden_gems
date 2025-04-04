@@ -17,8 +17,8 @@ const routes = [
     component: loadPage('CampfirePage')
   },
   {
-    path: '/activeBlog',
-    name: 'ActiveBlog',
+    path: '/activeBlog/:blogId',
+    name: 'Active Blog',
     component: loadPage('ActiveBlogPage')
   },
   {
