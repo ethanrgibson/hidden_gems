@@ -2,18 +2,19 @@ import { Auth0Provider } from "@bcwdev/auth0provider";
 import BaseController from "../utils/BaseController.js";
 import { blogLocationService } from "../services/BlogLocationService.js";
 
-export class BlogLocationsController extends BaseController{
+export class BlogLocationsController extends BaseController {
 
-  constructor(){
+  constructor() {
     super('api/location')
     this.router
-    .use(Auth0Provider.getAuthorizedUserInfo)
-    .post('', this.createALocation)
+      .get('', this.getAllLocations)
+      .use(Auth0Provider.getAuthorizedUserInfo)
+      .post('', this.createALocation)
 
   }
 
 
-  async createALocation(request, response, next){
+  async createALocation(request, response, next) {
     try {
       const locationData = request.body
       const location = await blogLocationService.createALocation(locationData)
@@ -23,5 +24,12 @@ export class BlogLocationsController extends BaseController{
     }
   }
 
-
+  async getAllLocations(request, response, next) {
+    try {
+      const locations = await blogLocationService.getAllLocations()
+      response.send(locations)
+    } catch (error) {
+      next(error)
+    }
+  }
 }
