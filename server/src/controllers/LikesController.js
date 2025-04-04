@@ -7,9 +7,9 @@ export class LikesController extends BaseController {
   constructor() {
     super('api/likes')
     this.router
+      .get('', this.getLikesByQuery)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createLike)
-
   }
 
 
@@ -26,9 +26,18 @@ export class LikesController extends BaseController {
     } catch (error) {
       next(error)
     }
-
-
-
   }
 
+
+
+  async getLikesByQuery(request, response, next) {
+
+    try {
+      const likeQuery = request.query
+      const likes = await likeService.getLikesByQuery(likeQuery)
+      response.send(likes)
+    } catch (error) {
+      next(error)
+    }
+  }
 }
