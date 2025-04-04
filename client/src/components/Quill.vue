@@ -1,0 +1,28 @@
+<script setup>
+import  {QuillEditor}  from "@vueup/vue-quill";
+</script>
+
+
+<template>
+<QuillEditor
+    theme="snow"
+    :toolbar="[
+      [{ header: [1, 2, 3, 4, 5, 6, false] }], // Header levels
+      [{ font: [] }], // Font family
+      [{ size: ['small', false, 'large', 'huge'] }], // Font size
+      ['bold', 'italic', 'underline', 'strike'], // Formatting buttons
+      [{ color: [] }, { background: [] }], // Text and background colors
+      [{ script: 'sub' }, { script: 'super' }], // Subscript and superscript
+      [{ list: 'ordered' }, { list: 'bullet' }], // Lists
+      [{ indent: '-1' }, { indent: '+1' }], // Indentation
+      [{ align: [] }], // Alignment options
+      ['blockquote', 'code-block'], // Blockquote and code block
+      ['clean'] // Clear formatting
+    ]"
+  />
+</template>
+
+
+<style lang="scss" scoped>
+
+</style>

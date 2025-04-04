@@ -1,5 +1,6 @@
 import '@mdi/font/css/materialdesignicons.css'
 import '@/assets/scss/style.scss'
+import "@vueup/vue-quill/dist/vue-quill.snow.css"
 import 'bootstrap/dist/js/bootstrap.bundle.js'
 import { createApp } from 'vue'
 // @ts-ignore
