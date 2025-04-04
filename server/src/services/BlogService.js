@@ -7,6 +7,7 @@ class BlogService {
     const blog = await dbContext.Blogs.create(blogData)
     await blog.populate('creator', 'name picture')
     await blog.populate('location', 'name')
+    await blog.populate('blogPictures','imgUrl' )
     return blog
   }
 
@@ -25,6 +26,7 @@ class BlogService {
       .populate('creator', 'name picture')
       .populate('likeCount')
       .populate('location', 'name')
+      .populate('blogPictures','imgUrl' )
 
     if (blog == null) {
       throw new BadRequest('BLOG DOES NOT EXIST')

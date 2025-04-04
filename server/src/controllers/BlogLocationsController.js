@@ -11,6 +11,7 @@ export class BlogLocationsController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createALocation)
 
+
   }
 
 
