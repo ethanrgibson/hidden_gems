@@ -2,33 +2,53 @@
 
 
 
+
+
 </script>
 
 
 <template>
   <div class="container">
     <div class="row">
-      <div class="col-12 d-flex tex-center">
+      <div class="col-12 ">
 
         <div class="text-center p-1">
-          <h1 class="fw-bold">Main Blog Page</h1>
+          <h1 class="fw-bold">blogs man</h1>
         </div>
-        <span class="mt-5 d-flex ">
-          account name and picture
-        </span>
-        <div class=" d-flex fs-2 p-3 text-danger">
-          <i class="mdi mdi-campfire"></i>
+        <div class="text-center">
+          <span class="mt-5  text-center">
+            account name and picture
+          </span>
+
+          <div class=" text-end fs-1 p-3 text-danger">
+            <i class="mdi mdi-campfire"></i>
+          </div>
         </div>
       </div>
     </div>
   </div>
   <hr>
+  <div class="container p-2">
+    <div class="row d-flex">
+      <div class="col-12">
+
+        <div col-12 class="">
+          <span>
+            <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
+            <button class="shadow justify-content-end btn btn-orange ms-1">save</button>
+            <button class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
+            <button class="shadow justify-content-end btn btn-orange ms-1">Deleat</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="container">
     <div class="">
       <div class="text-center">
         <i class="  fs-2 mdi mdi-arrow-left-bold-box"></i>
-        <img class="main-image-here"
+        <img class=" shadow main-image-here my-3"
           src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="camp">
         <span class=" fs-2 mdi mdi-arrow-right-bold-box"></span>
@@ -36,29 +56,14 @@
     </div>
   </div>
 
-  <div class="container justify-conten-center p-3">
-    <div class="row">
-
-      <div col-12 class="d-flex justify-content-center">
-        <span>
-
-          <button class=" justify-content-end btn btn-orange ms-5">camp button</button>
-          <button class=" justify-content-end btn btn-orange ms-5">camp type</button>
-          <button class=" justify-content-end btn btn-orange ms-5">camp fire</button>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div></div>
 
 
 
 
 
-
-  <div class="container text-shadow ">
-    <div class="text-center ">
-      <p class="text-center my-5  text-shadow">
+  <div class="container text-shadow bg-light text-bg">
+    <div class="text-center">
+      <p class="text-center my-5  text-shadow p-3 text-bg">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
         assumenda
         sequi
@@ -111,6 +116,4 @@
 .main-image-here {
   height: 35rem;
 }
-
-.text-shadow {}
 </style>
