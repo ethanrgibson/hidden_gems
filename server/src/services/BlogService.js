@@ -6,15 +6,16 @@ class BlogService {
   async createBlog(blogData) {
     const blog = await dbContext.Blogs.create(blogData)
     await blog.populate('creator', 'name picture')
+    await blog.populate('location', 'name')
     return blog
   }
 
 
   async getAllBlogs() {
     const blogs = await dbContext.Blogs.find()
-    .populate('creator', 'name picture')
-    .populate('likeCount')
-    .populate('location', 'name')
+      .populate('creator', 'name picture')
+      .populate('likeCount')
+      .populate('location', 'name')
     return blogs
   }
 
