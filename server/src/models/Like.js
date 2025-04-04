@@ -41,7 +41,10 @@ LikeSchema.virtual('creator',
 LikeSchema.virtual('blog',
   {
     ...otherOptions,
-    ref: 'Blog'
+    ref: 'Blog',
+    options: {
+      select: 'name picture'
+    }
   }
 )
 
@@ -50,19 +53,28 @@ LikeSchema.virtual('blog',
 LikeSchema.virtual('account',
   {
     ...otherOptions,
-    ref: 'Account'
+    ref: 'Account',
+    options: {
+      select: 'name picture'
+    }
   }
 )
 LikeSchema.virtual('location',
   {
     ...otherOptions,
-    ref: 'Location'
+    ref: 'Location',
+    options: {
+      select: 'name picture'
+    }
   }
 )
 LikeSchema.virtual('blogPicture',
 
   {
     ...otherOptions,
-    ref: 'blogPicture'
+    ref: 'blogPicture',
+    options: {
+      select: 'name picture'
+    }
   }
 )

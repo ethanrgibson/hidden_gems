@@ -26,3 +26,13 @@ blogPictureSchema.virtual('creator',
   }
 
 )
+
+blogPictureSchema.virtual('likeCount',
+  {
+    localField: '_id',
+    foreignField: 'otherId',
+    ref: 'Like',
+    justOne: false,
+    count: true
+  }
+)
