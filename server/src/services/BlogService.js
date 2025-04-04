@@ -18,6 +18,11 @@ class BlogService {
 
   async getBlogById(blogId) {
     const blog = await dbContext.Blogs.findById(blogId).populate('creator', 'name picture')
+
+    if (blog == null) {
+      throw new BadRequest('BLOG DOES NOT EXIST')
+    }
+
     return blog
   }
 
