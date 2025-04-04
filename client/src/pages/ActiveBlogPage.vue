@@ -1,47 +1,68 @@
 <script setup>
 
+
+
 </script>
 
 
 <template>
-
-  <div class="text-center">
-    <h1 class="fw-bold">Blog Name</h1>
-  </div>
-  <div>
-    account name
-  </div>
-  <i class="mdi mdi-campfire"></i>
-  <hr>
   <div class="container">
-    <div class="text-center">
+    <div class="row">
+      <div class="col-12 d-flex tex-center">
+
+        <div class="text-center p-1">
+          <h1 class="fw-bold">Main Blog Page</h1>
+        </div>
+        <span class="mt-5 d-flex ">
+          account name and picture
+        </span>
+        <div class=" d-flex fs-2 p-3 text-danger">
+          <i class="mdi mdi-campfire"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+
+  <div class="container">
+    <div class="">
       <div class="text-center">
-        <i class=" fs-2 mdi mdi-arrow-left-bold-box"></i>
+        <i class="  fs-2 mdi mdi-arrow-left-bold-box"></i>
         <img class="main-image-here"
-          src="https://images.unsplash.com/photo-1525811902-f2342640856e?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="camp">
         <span class=" fs-2 mdi mdi-arrow-right-bold-box"></span>
       </div>
     </div>
-    <div>this might just be me but its all working </div>
-    <div class="container justify-content-end">
-      <div col-3>
-        <button class=" justify-content-end btn btn-orange ms-5">camp button</button>
-        <button class=" justify-content-end btn btn-orange ms-5">camp type</button>
-        <button class=" justify-content-end btn btn-orange ms-5">camp fire</button>
-      </div>
-    </div>
-    <div></div>
   </div>
 
+  <div class="container justify-conten-center p-3">
+    <div class="row">
+
+      <div col-12 class="d-flex justify-content-center">
+        <span>
+
+          <button class=" justify-content-end btn btn-orange ms-5">camp button</button>
+          <button class=" justify-content-end btn btn-orange ms-5">camp type</button>
+          <button class=" justify-content-end btn btn-orange ms-5">camp fire</button>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div></div>
 
 
 
 
 
-  <div class="container ">
+
+  <div class="container text-shadow ">
     <div class="text-center ">
-      <p class="text-center my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut assumenda sequi unde
+      <p class="text-center my-5  text-shadow">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
+        assumenda
+        sequi
+        unde
         voluptate aut non suscipit minus ipsa id! Animi quibusdam magni quis facilis voluptatum. Quisquam, porro atque
         similique eum vitae optio nam labore maiores, temporibus architecto molestiae quibusdam asperiores. Vero
         reiciendis hic placeat ea quidem possimus, cupiditate eaque debitis consectetur facere perspiciatis quis id
@@ -81,18 +102,15 @@
         delectus dicta quidem tenetur iusto ducimus eveniet ut. Voluptatum qui vel iure.</p>
     </div>
   </div>
-
-  <span>this is the end</span>
-  <img class="main-image-here"
-    src="https://images.unsplash.com/photo-1568576550491-185584b2145a?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-    alt="campground">
-  <i class="mdi mdi-facebook"></i>
-  <i class="mdi mdi-linkedin"></i>
+  <!-- <MapComponents /> -->
 </template>
+
 
 
 <style lang="scss" scoped>
 .main-image-here {
-  height: 30rem;
+  height: 35rem;
 }
+
+.text-shadow {}
 </style>

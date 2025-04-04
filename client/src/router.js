@@ -17,6 +17,11 @@ const routes = [
     component: loadPage('CampfirePage')
   },
   {
+    path: '/activeBlog',
+    name: 'ActiveBlog',
+    component: loadPage('ActiveBlogPage')
+  },
+  {
     path: '/about',
     name: 'About',
     component: loadPage('AboutPage')
