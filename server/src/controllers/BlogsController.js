@@ -2,6 +2,7 @@ import { Auth0Provider } from "@bcwdev/auth0provider";
 import BaseController from "../utils/BaseController.js";
 import { blogService } from "../services/BlogService.js";
 import { blogPicturesService } from "../services/BlogPicturesService.js";
+import { likeService } from "../services/LikeService.js";
 
 export class BlogsController extends BaseController {
 
@@ -20,7 +21,6 @@ export class BlogsController extends BaseController {
   }
 
   async createBlog(request, response, next) {
-
     try {
       const blogData = request.body
       const userInfo = request.userInfo
@@ -30,7 +30,6 @@ export class BlogsController extends BaseController {
     } catch (error) {
       next(error)
     }
-
   }
 
 
@@ -44,7 +43,6 @@ export class BlogsController extends BaseController {
   }
 
   async getBlogById(request, response, next) {
-
     try {
       const blogId = request.params.blogId
       const blog = await blogService.getBlogById(blogId)
@@ -52,7 +50,6 @@ export class BlogsController extends BaseController {
     } catch (error) {
       next(error)
     }
-
   }
 
   async editBlogById(request, response, next) {
@@ -69,9 +66,7 @@ export class BlogsController extends BaseController {
 
 
   async deleteBlogById(request, response, next) {
-
     try {
-
       const blogId = request.params.blogId
       const userInfo = request.userInfo
       const message = await blogService.deleteBlogById(blogId, userInfo)
@@ -82,9 +77,7 @@ export class BlogsController extends BaseController {
   }
 
   async getBlogPicturesByBlogId(request, response, next) {
-
     try {
-
       const blogId = request.params.blogId
       const pictures = await blogPicturesService.getBlogPicturesById(blogId)
       response.send(pictures)
@@ -92,7 +85,6 @@ export class BlogsController extends BaseController {
       next(error)
     }
   }
-
 
 
 }

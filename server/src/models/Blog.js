@@ -32,4 +32,14 @@ BlogSchema.virtual('creator',
 )
 
 
+BlogSchema.virtual('likeCount',
+  {
+    localField: '_id',
+    foreignField: 'otherId',
+    ref: 'Like',
+    justOne: false,
+    count: true
+  }
+)
+
 

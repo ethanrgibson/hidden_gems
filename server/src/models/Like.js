@@ -5,9 +5,11 @@ import { Schema } from "mongoose";
 
 export const LikeSchema = new Schema(
   {
-
+    // Who liked something
     accountId: { type: Schema.ObjectId, required: true, ref: 'Account' },
+    //  What was liked
     otherId: { type: Schema.ObjectId, required: true },
+    // type of thing that was liked
     type: { type: String, enum: ['Location', 'Account', 'Blog', 'BlogPicture'] }
   },
   {
@@ -29,14 +31,20 @@ LikeSchema.virtual('creator',
   {
     ...otherOptions,
     localField: 'accountId',
-    ref: 'Account'
+    ref: 'Account',
+    options: {
+      select: 'name picture'
+    }
   }
 )
 
 LikeSchema.virtual('blog',
   {
     ...otherOptions,
-    ref: 'Blog'
+    ref: 'Blog',
+    options: {
+      select: 'name picture'
+    }
   }
 )
 
@@ -45,19 +53,28 @@ LikeSchema.virtual('blog',
 LikeSchema.virtual('account',
   {
     ...otherOptions,
-    ref: 'Account'
+    ref: 'Account',
+    options: {
+      select: 'name picture'
+    }
   }
 )
 LikeSchema.virtual('location',
   {
     ...otherOptions,
-    ref: 'Location'
+    ref: 'Location',
+    options: {
+      select: 'name picture'
+    }
   }
 )
 LikeSchema.virtual('blogPicture',
 
   {
     ...otherOptions,
-    ref: 'blogPicture'
+    ref: 'blogPicture',
+    options: {
+      select: 'name picture'
+    }
   }
 )
