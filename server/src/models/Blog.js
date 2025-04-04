@@ -10,7 +10,7 @@ export const BlogSchema = new Schema(
     coverImg: { type: String, required: true, minLength: 1, maxLength: 1000 },
     isPublished: { type: Boolean, required: true, default: false },
     category: { type: String, enum: ['camping', 'hiking', 'overlanding'] }
-    
+
   },
 
   {
@@ -31,5 +31,15 @@ BlogSchema.virtual('creator',
   },
 )
 
+
+BlogSchema.virtual('likeCount',
+  {
+    localField: '_id',
+    foreignField: 'otherId',
+    ref: 'Like',
+    justOne: false,
+    count: true
+  }
+)
 
 
