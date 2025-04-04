@@ -6,6 +6,13 @@ class LikeService {
     await like.populate('creator', 'name picture')
     return like
   }
+
+  async getLikesForBlog(blogId) {
+    const likes = await dbContext.Likes.find({ otherId: blogId }).populate('creator', 'name picture')
+
+    return likes
+
+  }
 }
 
 
