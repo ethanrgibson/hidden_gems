@@ -5,9 +5,11 @@ import { Schema } from "mongoose";
 
 export const LikeSchema = new Schema(
   {
-
+    // Who liked something
     accountId: { type: Schema.ObjectId, required: true, ref: 'Account' },
+    //  What was liked
     otherId: { type: Schema.ObjectId, required: true },
+    // type of thing that was liked
     type: { type: String, enum: ['Location', 'Account', 'Blog', 'BlogPicture'] }
   },
   {
@@ -29,7 +31,10 @@ LikeSchema.virtual('creator',
   {
     ...otherOptions,
     localField: 'accountId',
-    ref: 'Account'
+    ref: 'Account',
+    options: {
+      select: 'name picture'
+    }
   }
 )
 
