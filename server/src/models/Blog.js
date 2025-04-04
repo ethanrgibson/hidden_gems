@@ -9,7 +9,9 @@ export const BlogSchema = new Schema(
     body: { type: String, required: true, minLength: 15, maxLength: 5000 },
     coverImg: { type: String, required: true, minLength: 1, maxLength: 1000 },
     isPublished: { type: Boolean, required: true, default: false },
-    category: { type: String, enum: ['camping', 'hiking', 'overlanding'] }
+    category: { type: String, enum: ['camping', 'hiking', 'overlanding'] },
+    locationId: { type: Schema.ObjectId, ref: 'BlogLocation' },
+    blogPicturesId: {type: Schema.ObjectId, ref: 'BlogPicture'}
 
   },
 
@@ -42,4 +44,22 @@ BlogSchema.virtual('likeCount',
   }
 )
 
+BlogSchema.virtual('location',
+
+  {
+    localField: 'locationId',
+    foreignField: '_id',
+    ref: 'BlogLocation',
+    justOne: true
+  }
+)
+
+BlogSchema.virtual('blogPictures',
+  {
+    localField: 'blogPicturesId',
+    foreignField: '_id',
+    ref: 'BlogPicture',
+    justOne: true
+  }
+)
 

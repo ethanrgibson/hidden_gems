@@ -3,8 +3,9 @@ import { Schema } from "mongoose"
 export const blogLocationSchema = new Schema(
 
   {
-    locationId: { type: Schema.ObjectId, required: true, ref: 'Location' },
-    blogId: { type: Schema.ObjectId, required: true, ref: 'Blog' }
+    // NOTE Location ID created from lat/long from national parks API. Not required because not every blog post will be about a campground in national parks, or even have a location
+    locationId: { type: Schema.ObjectId, ref: 'Location' },
+    name: { type: String, required: true, minLength: 3, maxLength: 100 }
   },
 
   {

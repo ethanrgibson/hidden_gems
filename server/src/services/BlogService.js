@@ -6,18 +6,27 @@ class BlogService {
   async createBlog(blogData) {
     const blog = await dbContext.Blogs.create(blogData)
     await blog.populate('creator', 'name picture')
+    await blog.populate('location', 'name')
+    await blog.populate('blogPictures','imgUrl' )
     return blog
   }
 
 
   async getAllBlogs() {
-    const blogs = await dbContext.Blogs.find().populate('creator', 'name picture').populate('likeCount')
+    const blogs = await dbContext.Blogs.find()
+      .populate('creator', 'name picture')
+      .populate('likeCount')
+      .populate('location', 'name')
     return blogs
   }
 
 
   async getBlogById(blogId) {
-    const blog = await await dbContext.Blogs.findById(blogId).populate('creator', 'name picture').populate('likeCount')
+    const blog = await await dbContext.Blogs.findById(blogId)
+      .populate('creator', 'name picture')
+      .populate('likeCount')
+      .populate('location', 'name')
+      .populate('blogPictures','imgUrl' )
 
     if (blog == null) {
       throw new BadRequest('BLOG DOES NOT EXIST')
