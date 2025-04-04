@@ -18,6 +18,8 @@ export const LikeSchema = new Schema(
   }
 )
 
+LikeSchema.index({ accountId: 1, otherId: 1 }, { unique: true })
+
 
 
 const otherOptions = {

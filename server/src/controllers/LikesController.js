@@ -20,7 +20,7 @@ export class LikesController extends BaseController {
       const likeData = request.body
       const userInfo = request.userInfo
       likeData.accountId = userInfo.id
-      const like = await likeService.createLike(likeData)
+      const like = await likeService.createLike(likeData, userInfo)
       response.send(like)
 
     } catch (error) {
