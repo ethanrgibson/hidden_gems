@@ -45,7 +45,6 @@ import Quill from '@/components/Quill.vue';
             <h2>Explore With Others</h2>
           </div>
         </div>
-        <Quill />
         <div class="col-md-7 py-3">
           <div class="d-flex align-items-center justify-content-between bg-light shadow p-4">
               <div>

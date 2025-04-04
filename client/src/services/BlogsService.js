@@ -4,6 +4,10 @@ import { Blog } from "@/models/Blog.js"
 import { AppState } from "@/AppState.js"
 
 class BlogsService {
+  async createBlog(blogData) {
+    const response = await api.post('api/blogs', blogData)
+    logger.log(response.data)
+  }
   async getAllBlogs() {
     const response = await api.get('api/blogs')
     logger.log(response.data)
