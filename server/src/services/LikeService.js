@@ -1,7 +1,7 @@
 // TODO Create clamp so a user can only like something one time
 
 import { dbContext } from "../db/DbContext.js"
-import { BadRequest } from "../utils/Errors.js"
+import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class LikeService {
   async createLike(likeData, userInfo) {
@@ -23,6 +23,23 @@ class LikeService {
 
     const likes = await dbContext.Likes.find(likeQuery).populate(virtualName)
     return likes
+  }
+
+
+  async deleteLike(likeId, userInfo) {
+    const like = await dbContext.Likes.findById(likeId)
+
+    if (like == null) {
+      throw new BadRequest('You already dislike this!')
+    }
+
+    if (like.accountId != userInfo.id) {
+      throw new Forbidden('YOU CANNOT UNLIKE SOMETHING FOR SOMEONE ELSE')
+    }
+
+    await like.deleteOne()
+    return 'You no longer like this!'
+
   }
 }
 

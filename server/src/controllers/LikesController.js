@@ -10,6 +10,7 @@ export class LikesController extends BaseController {
       .get('', this.getLikesByQuery)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createLike)
+      .delete('/:likeId', this.deleteLike)
   }
 
 
@@ -36,6 +37,18 @@ export class LikesController extends BaseController {
       const likeQuery = request.query
       const likes = await likeService.getLikesByQuery(likeQuery)
       response.send(likes)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+
+  async deleteLike(request, response, next) {
+    try {
+      const likeId = request.params.likeId
+      const userInfo = request.userInfo
+      const message = await likeService.deleteLike(likeId, userInfo)
+      response.send(message)
     } catch (error) {
       next(error)
     }
