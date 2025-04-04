@@ -5,7 +5,7 @@ import { blogService } from "./BlogService.js"
 class BlogPicturesService {
 
   async getBlogPicturesById(blogId) {
-    const pictures = await dbContext.blogPictures.find({ blogId: blogId })
+    const pictures = await dbContext.blogPictures.find({ blogId: blogId }).populate('likeCount')
 
     return pictures
   }

@@ -12,7 +12,6 @@ export class BlogsController extends BaseController {
       .get('', this.getAllBlogs)
       .get('/:blogId', this.getBlogById)
       .get('/:blogId/pictures', this.getBlogPicturesByBlogId)
-      .get('/:blogId/likes', this.getLikesForBlog)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createBlog)
       .put('/:blogId', this.editBlogById)
@@ -87,20 +86,5 @@ export class BlogsController extends BaseController {
     }
   }
 
-
-  async getLikesForBlog(request, response, next) {
-
-    try {
-
-      const blogId = request.params.blogId
-      const likes = await likeService.getLikesForBlog(blogId)
-      response.send(likes)
-    } catch (error) {
-      next(error)
-    }
-
-
-
-  }
 
 }
