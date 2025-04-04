@@ -30,6 +30,9 @@
       "titleBar.inactiveForeground": "#15202b99",
       "editorGroup.border": "#bdaed1"
     },
-    "peacock.color": "#a38dbf"
+    "peacock.color": "#a38dbf",
+    "cSpell.words": [
+      "overlanding"
+    ]
   }
 }
