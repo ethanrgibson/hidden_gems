@@ -1,19 +1,21 @@
 <script setup>
-import { ref, watch } from 'vue';
-import { loadState, saveState } from '../utils/Store.js';
+import { Pop } from '@/utils/Pop.js';
 import Login from './Login.vue';
+import { logger } from '@/utils/Logger.js';
+import { ref } from 'vue';
+import { blogsService } from '@/services/BlogsService.js';
 
-const theme = ref(loadState('theme') || 'light')
+const editableSearch = ref('')
 
-function toggleTheme() {
-  theme.value = theme.value == 'light' ? 'dark' : 'light'
+async function searchBlogs(){
+  try {
+    await blogsService.searchBlogs(editableSearch.value)
+  }
+  catch (error){
+    Pop.error(error, 'could not search');
+    logger.log('could not search',error)
+  }
 }
-
-watch(theme, () => {
-  document.documentElement.setAttribute('data-bs-theme', theme.value)
-  saveState('theme', theme.value)
-}, { immediate: true })
-
 </script>
 
 <template >
@@ -43,8 +45,8 @@ watch(theme, () => {
           <span type="button" class="nav-link text-light" >Overland</span>
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input  class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form @submit.prevent="searchBlogs()" class="d-flex" role="search">
+        <input v-model="editableSearch"  class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
