@@ -11,6 +11,7 @@ const route = useRoute()
 const router = useRouter()
 
 const blog = computed(() => AppState.blog)
+const account = computed(()=> AppState.account)
 
 onMounted(() => {
   getBlogById()
@@ -70,7 +71,7 @@ async function deleteBlog(){
       <div class="col-12">
 
         <div col-12 class="">
-          <span>
+          <span v-if="account?.id == blog?.creatorId">
             <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
             <button class="shadow justify-content-end btn btn-orange ms-1">save</button>
             <button class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
@@ -104,6 +105,7 @@ async function deleteBlog(){
     </div>
   </div>
   <!-- <MapComponents /> -->
+
 </template>
 
 
