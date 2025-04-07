@@ -21,10 +21,10 @@ async function getBlogById() {
   try {
     const blogId = route.params.blogId
     await blogsService.getBlogById(blogId)
-    logger.log(`no blogs man`)
+    logger.log(`Getting blog with the id of`, blogId)
   } catch (error) {
-    Pop.error(error, `get no blogs`)
-    logger.error(`couldn't get blogs`, error)
+    Pop.error(error, `could not get blog`)
+    logger.error(`couldn't get blog`, error)
   }
 }
 async function deleteBlog(){
@@ -36,6 +36,18 @@ async function deleteBlog(){
     const blogId = route.params.blogId
     await blogsService.deleteBlog(blogId)
     router.push({ name: 'Campfire',})
+  }
+  catch (error){
+    Pop.error(error);
+  }
+}
+async function publishBlog() {
+  try {
+    const confirmed = await Pop.confirm('Publishing Blog', 'Are you sure you want to publish? this will post your blog to the Campfire for all to see', 'yes', 'no')
+    if (!confirmed) {
+      return
+    } const blogId = route.params.blogId
+      await blogsService.publishBlog(blogId)
   }
   catch (error){
     Pop.error(error);
@@ -74,7 +86,7 @@ async function deleteBlog(){
           <span v-if="account?.id == blog?.creatorId">
             <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
             <button class="shadow justify-content-end btn btn-orange ms-1">save</button>
-            <button class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
+            <button @click="publishBlog()" class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
             <button @click="deleteBlog()" class="shadow justify-content-end btn btn-orange ms-1">Delete</button>
           </span>
         </div>

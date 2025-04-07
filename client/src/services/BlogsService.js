@@ -4,6 +4,9 @@ import { Blog } from "@/models/Blog.js"
 import { AppState } from "@/AppState.js"
 
 class BlogsService {
+  publishBlog(blogId) {
+    throw new Error('Method not implemented.')
+  }
   async deleteBlog(blogId) {
     const response = await api.delete(`api/blogs/${blogId}`)
     logger.log(response.data)
