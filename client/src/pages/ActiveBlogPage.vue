@@ -4,9 +4,11 @@ import { blogsService } from '@/services/BlogsService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
 import { computed, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute()
+
+const router = useRouter()
 
 const blog = computed(() => AppState.blog)
 
@@ -22,6 +24,20 @@ async function getBlogById() {
   } catch (error) {
     Pop.error(error, `get no blogs`)
     logger.error(`couldn't get blogs`, error)
+  }
+}
+async function deleteBlog(){
+  try {
+    const confirmed = await Pop.confirm('Deleting blog', 'are you sure you would like to delete this blog?', 'yes', 'no')
+    if (!confirmed) {
+      return
+    }
+    const blogId = route.params.blogId
+    await blogsService.deleteBlog(blogId)
+    router.push({ name: 'Campfire',})
+  }
+  catch (error){
+    Pop.error(error);
   }
 }
 
@@ -58,7 +74,7 @@ async function getBlogById() {
             <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
             <button class="shadow justify-content-end btn btn-orange ms-1">save</button>
             <button class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
-            <button class="shadow justify-content-end btn btn-orange ms-1">Delete</button>
+            <button @click="deleteBlog()" class="shadow justify-content-end btn btn-orange ms-1">Delete</button>
           </span>
         </div>
       </div>
