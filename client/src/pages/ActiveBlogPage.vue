@@ -18,10 +18,10 @@ async function getBlogById() {
   try {
     const blogId = route.params.blogId
     await blogsService.getBlogById(blogId)
-    console.log(`no blogs man`)
+    logger.log(`no blogs man`)
   } catch (error) {
     Pop.error(error, `get no blogs`)
-    logger.error(`couldnt get blogs`, error)
+    logger.error(`couldn't get blogs`, error)
   }
 }
 
@@ -32,7 +32,6 @@ async function getBlogById() {
   <div v-if="blog" class="container">
     <div class="row">
       <div class="col-12 ">
-
         <div class="text-center p-1">
           <h1 class="fw-bold">{{ blog.title }}</h1>
         </div>
@@ -58,7 +57,7 @@ async function getBlogById() {
             <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
             <button class="shadow justify-content-end btn btn-orange ms-1">save</button>
             <button class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
-            <button class="shadow justify-content-end btn btn-orange ms-1">Deleat</button>
+            <button class="shadow justify-content-end btn btn-orange ms-1">Delete</button>
           </span>
         </div>
       </div>
