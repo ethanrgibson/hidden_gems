@@ -8,5 +8,7 @@ export const AppState = reactive({
   account: null,
   /** @type {import('./models/Blog.js').Blog[]} user info from the database*/
   blogs: [],
+  /** @type {import('./models/Blog.js').Blog} user info from the database*/
+  blog: null
 })
 
