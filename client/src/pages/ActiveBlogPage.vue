@@ -66,7 +66,7 @@ async function getBlogById() {
     </div>
   </div>
 
-  <div class="container">
+  <div v-if="blog" class="container">
     <div class="">
       <div class="text-center">
         <i class="  fs-2 mdi mdi-arrow-left-bold-box"></i>
@@ -81,7 +81,7 @@ async function getBlogById() {
 
 
 
-  <div class="container text-shadow bg-light text-bg">
+  <div v-if="blog" class="container text-shadow bg-light text-bg">
     <div class="text-center">
       <p class="text-center my-5  text-shadow p-3 text-bg">
         {{ blog.body }}
