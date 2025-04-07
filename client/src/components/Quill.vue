@@ -8,7 +8,7 @@ async function saveBlog() {
   
 }
 </script>
- 
+
 
 <template>
   <form @submit.prevent="saveBlog()">
@@ -19,12 +19,9 @@ async function saveBlog() {
           [{ font: [] }], // Font family
           [{ size: ['small', false, 'large', 'huge'] }], // Font size
           ['bold', 'italic', 'underline', 'strike'], // Formatting buttons
-          [{ color: [] }, { background: [] }], // Text and background colors
-          [{ script: 'sub' }, { script: 'super' }], // Subscript and superscript
           [{ list: 'ordered' }, { list: 'bullet' }], // Lists
           [{ indent: '-1' }, { indent: '+1' }], // Indentation
           [{ align: [] }], // Alignment options
-          ['blockquote', 'code-block'], // Blockquote and code block
           ['clean'] // Clear formatting
         ]"
       />
