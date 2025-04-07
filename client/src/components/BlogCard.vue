@@ -14,7 +14,7 @@ defineProps({
 <template>
   <RouterLink :to="{ name: 'Active Blog', params: { blogId: blogProp.id } }">
 
-    <div class="d-flex bg-light p-2 my-2 rounded">
+    <div class="d-flex bg-light p-2 my-2 rounded ">
       <div class="px-1 ">
         <img class="activity-tile  " :src="blogProp.coverImg"
           :alt="'a picture for ' + blogProp.creator.name + `'s' post`">
@@ -51,5 +51,8 @@ defineProps({
   height: 2rem;
   aspect-ratio: 1/1;
   border-radius: 100%;
+}
+a {
+  text-decoration: none;
 }
 </style>
