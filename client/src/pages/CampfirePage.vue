@@ -40,7 +40,6 @@ const filterCategory = ref('all')
     <div class="row campfire-bg">
       <div class="col-12">
           <div class="">
-            
           </div>
       </div>
     </div>
