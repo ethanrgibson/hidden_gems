@@ -4,13 +4,19 @@ import BlogCard from '@/components/BlogCard.vue';
 import { blogsService } from '@/services/BlogsService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 onMounted(()=> {
   getAllBlogs()
 })
 
-const blogs = computed(()=> AppState.blogs)
+const blogs = computed(()=> {
+  if (filterCategory.value == 'all') {
+    return AppState.blogs
+  }
+  return AppState.blogs.filter(blog => blog.category == filterCategory.value )
+
+})
 
 
 async function getAllBlogs() {
@@ -22,6 +28,10 @@ async function getAllBlogs() {
     logger.error('could not get blogs', error)
   }
 }
+
+const filterCategory = ref('all')
+
+
 </script>
 
 
@@ -35,7 +45,17 @@ async function getAllBlogs() {
     </div>
       <div class="row">
         <div class="col-12 d-flex">
-          <div class="col-4 d-flex flex-column flex-grow-1">saDASDa</div>
+          <div class="col-4 d-flex flex-column flex-grow-1">
+            <div>
+                <label for="category"></label>
+                <select v-model="filterCategory" name="category" id="category">
+                  <option value="all">All</option>
+                  <option value="camping">Camping</option>
+                  <option value="hiking">Hiking</option>
+                  <option value="overlanding">Overland</option>
+                </select>
+            </div>
+          </div>
           <div class="col-md-8">
             <div class="row">
               <div v-for="b in blogs" :key="b.id" class="col-12">
