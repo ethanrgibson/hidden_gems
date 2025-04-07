@@ -4,6 +4,14 @@ import { Blog } from "@/models/Blog.js"
 import { AppState } from "@/AppState.js"
 
 class BlogsService {
+  async deleteBlog(blogId) {
+    const response = await api.delete(`api/blogs/${blogId}`)
+    logger.log(response.data)
+    const blogs = AppState.blogs
+    const blogIndex = blogs.findIndex(blog => blog.id == blogId)
+    blogs.splice(blogIndex, 1)
+
+  }
   async searchBlogs(searchData) {
     logger.log('searching for', searchData)
     const response = await api.get(`api/blogs?query=${searchData}`)
