@@ -36,9 +36,10 @@ async function getBlogById() {
           <h1 class="fw-bold">{{ blog.title }}</h1>
         </div>
         <div class="text-center">
-          <span class="mt-5  text-center">
+          <span class="mt-5 fs-4  text-center">
             {{ blog.creator.name }}
           </span>
+          <img class="creator-img" :src="blog.creator.picture" alt="">
 
           <div class=" text-end fs-1 p-3 text-danger">
             <i class="mdi mdi-campfire"></i>
@@ -64,7 +65,7 @@ async function getBlogById() {
     </div>
   </div>
 
-  <div class="container">
+  <div v-if="blog" class="container">
     <div class="">
       <div class="text-center">
         <i class="  fs-2 mdi mdi-arrow-left-bold-box"></i>
@@ -79,7 +80,7 @@ async function getBlogById() {
 
 
 
-  <div class="container text-shadow bg-light text-bg">
+  <div v-if="blog" class="container text-shadow bg-light text-bg">
     <div class="text-center">
       <p class="text-center my-5  text-shadow p-3 text-bg">
         {{ blog.body }}
@@ -94,5 +95,10 @@ async function getBlogById() {
 <style lang="scss" scoped>
 .main-image-here {
   height: 35rem;
+}
+
+.creator-img {
+  height: 3rem;
+  border-radius: 50%;
 }
 </style>
