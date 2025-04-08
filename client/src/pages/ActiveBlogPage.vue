@@ -69,7 +69,6 @@ async function publishBlog() {
             {{ blog.creator.name }}
           </span>
           <img class="creator-img" :src="blog.creator.picture" alt="">
-
           <div class=" text-end fs-1 p-3 text-danger">
             <i class="mdi mdi-campfire"></i>
           </div>
@@ -81,7 +80,6 @@ async function publishBlog() {
   <div class="container p-2">
     <div class="row d-flex">
       <div class="col-12">
-
         <div col-12 class="">
           <span v-if="account?.id == blog?.creatorId">
             <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
@@ -93,7 +91,6 @@ async function publishBlog() {
       </div>
     </div>
   </div>
-
   <div v-if="blog" class="container">
     <div class="">
       <div class="text-center">
