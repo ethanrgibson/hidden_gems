@@ -37,10 +37,19 @@ const filterCategory = ref('all')
 
 <template>
   <section class="container-fluid ">
-    <div class="row campfire-bg">
+    <div class="row text-end campfire-bg">
       <div class="col-12">
-          <div class="">
+        <div class="  d-flex justify-content-end align-items-center px-4 ">
+          <div class="text-white-shadow px-5 d-flex flex-column justify-">
+            <div>
+              <h1 class="">Welcome to the Campfire</h1>
+              <span class="">Come and Share your stories..</span>
+            </div>
+            <div>
+              <button data-bs-toggle="modal" data-bs-target="#blogModal" class="btn-warning btn">Create New +</button>
+            </div>
           </div>
+        </div>
       </div>
     </div>
       <div class="row">
@@ -58,8 +67,8 @@ const filterCategory = ref('all')
           </div>
           <div class="col-md-8">
             <div class="row">
-              <div v-for="b in blogs" :key="b.id" class="col-12">
-                <BlogCard :blogProp="b"/>
+              <div  v-for="b in blogs" :key="b.id" class="col-12">
+                <BlogCard v-if="b.isPublished" :blogProp="b"/>
               </div>
 
             </div>
