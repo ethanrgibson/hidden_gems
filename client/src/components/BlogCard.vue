@@ -33,6 +33,10 @@ defineProps({
         <div class="pt-3 ">
           <p><i>{{ blogProp.body }}</i></p>
         </div>
+        <div class="d-flex justify-content-end">
+          <p>{{ }}</p>
+          <i class=" fs-4 mdi mdi-campfire"></i>
+        </div>
       </div>
     </div>
   </RouterLink>
@@ -52,6 +56,7 @@ defineProps({
   aspect-ratio: 1/1;
   border-radius: 100%;
 }
+
 a {
   text-decoration: none;
 }
