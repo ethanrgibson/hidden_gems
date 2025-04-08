@@ -7,6 +7,7 @@ import { useRoute } from "vue-router";
 
 const route = useRoute()
 
+
 const editableBodyData = ref('')
 
 async function saveBlog() {
