@@ -10,6 +10,8 @@ onMounted(()=> {
   getAllBlogs()
 })
 
+const account = computed(()=> AppState.account)
+
 const blogs = computed(()=> {
   if (filterCategory.value == 'all') {
     return AppState.blogs
@@ -68,7 +70,7 @@ const filterCategory = ref('all')
           <div class="col-md-8">
             <div class="row">
               <div  v-for="b in blogs" :key="b.id" class="col-12">
-                <BlogCard v-if="b.isPublished" :blogProp="b"/>
+                <BlogCard v-if="b.isPublished || account?.id == b.creatorId" :blogProp="b"/>
               </div>
 
             </div>
