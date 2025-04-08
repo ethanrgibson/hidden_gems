@@ -22,6 +22,11 @@ const routes = [
     component: loadPage('ActiveBlogPage')
   },
   {
+    path: '/editBlog/:blogId',
+    name: 'Edit Blog',
+    component: loadPage('EditBlogPage')
+  },
+  {
     path: '/about',
     name: 'About',
     component: loadPage('AboutPage')

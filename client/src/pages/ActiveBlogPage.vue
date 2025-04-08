@@ -82,7 +82,9 @@ async function publishBlog() {
       <div class="col-12">
         <div col-12 class="">
           <span v-if="account?.id == blog?.creatorId">
+            <RouterLink :to="{ name: 'Edit Blog', params: { blogId: route.params.blogId } }">
             <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
+          </RouterLink>
             <button @click="publishBlog()" class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
             <button @click="deleteBlog()" class="shadow justify-content-end btn btn-orange ms-1">Delete</button>
           </span>
