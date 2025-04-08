@@ -1,18 +1,28 @@
 <script setup>
+import { blogsService } from "@/services/BlogsService.js";
 import { logger } from "@/utils/Logger.js";
 import  {QuillEditor}  from "@vueup/vue-quill";
+import { ref } from "vue";
+import { useRoute } from "vue-router";
 
+const route = useRoute()
+
+
+const editableBodyData = ref('')
 
 async function saveBlog() {
   logger.log('saving form')
-  
+  const blogId = route.params.blogId
+  const blogData = editableBodyData.value
+  await blogsService.saveBlog(blogId, blogData)
 }
 </script>
 
 
 <template>
   <form @submit.prevent="saveBlog()">
-    <QuillEditor
+
+    <QuillEditor v-model="editableBodyData"
         theme="snow"
         :toolbar="[
           [{ header: [1, 2, 3, 4, 5, 6, false] }], // Header levels
