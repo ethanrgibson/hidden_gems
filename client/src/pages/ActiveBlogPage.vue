@@ -83,7 +83,6 @@ async function publishBlog() {
         <div col-12 class="">
           <span v-if="account?.id == blog?.creatorId">
             <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
-            <button class="shadow justify-content-end btn btn-orange ms-1">save</button>
             <button @click="publishBlog()" class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
             <button @click="deleteBlog()" class="shadow justify-content-end btn btn-orange ms-1">Delete</button>
           </span>
@@ -121,7 +120,8 @@ async function publishBlog() {
 
 <style lang="scss" scoped>
 .main-image-here {
-  height: 35rem;
+  height: 35dvh;
+
 }
 
 .creator-img {

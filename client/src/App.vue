@@ -1,4 +1,5 @@
 <script setup>
+import ModalComponent from './components/ModalComponent.vue';
 import Navbar from './components/Navbar.vue';
 import { RouterView } from 'vue-router';
 
@@ -36,6 +37,7 @@ import { RouterView } from 'vue-router';
       </div>
     </section>
   </footer>
+  <ModalComponent/>
 </template>
 
 <style lang="scss">
