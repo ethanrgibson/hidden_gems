@@ -4,8 +4,14 @@ import { Blog } from "@/models/Blog.js"
 import { AppState } from "@/AppState.js"
 
 class BlogsService {
-  publishBlog(blogId) {
-    throw new Error('Method not implemented.')
+  async publishBlog(blogId) {
+    const blogToPublish = AppState.blogs.find(blog => blog.id == blogId)
+    blogToPublish.isPublished = !blogToPublish.isPublished
+
+    const response = await api.put(`api/blogs/${blogId}`, blogToPublish)
+    const blog = new Blog(response.data)
+    logger.log(blog)
+    AppState.blog = blog
   }
   async deleteBlog(blogId) {
     const response = await api.delete(`api/blogs/${blogId}`)
