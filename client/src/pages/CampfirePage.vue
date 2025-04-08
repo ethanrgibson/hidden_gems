@@ -10,8 +10,10 @@ onMounted(()=> {
   getAllBlogs()
 })
 
-const account = computed(()=> AppState.account)
 
+
+
+const account = computed(()=> AppState.account)
 const blogs = computed(()=> {
   if (filterCategory.value == 'all') {
     return AppState.blogs
@@ -69,13 +71,12 @@ const filterCategory = ref('all')
           </div>
           <div class="col-md-8">
             <div class="row">
+              <!-- NOTE copying our Code Emperor Jake's style of using the first character -->
               <div  v-for="b in blogs" :key="b.id" class="col-12">
                 <BlogCard v-if="b.isPublished || account?.id == b.creatorId" :blogProp="b"/>
               </div>
-
             </div>
           </div>
-          <!-- NOTE copying our Code Emperor Jake's style of using the first character -->
         </div>
         </div>
   </section>
