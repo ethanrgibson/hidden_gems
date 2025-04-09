@@ -25,6 +25,7 @@ const blogContent = ref('')
 let timer
 function updateAndSave() {
   clearTimeout(timer)
+
   timer = setTimeout(saveQuillChanges, 30000);
 }
 async function saveQuillChanges() {
