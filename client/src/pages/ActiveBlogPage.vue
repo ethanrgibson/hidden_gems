@@ -15,42 +15,30 @@ const route = useRoute()
 const router = useRouter()
 
 const blog = computed(() => AppState.blog)
-// const account = computed(() => AppState.account)
 
-// const blogContent = ref('')
 
+// watch(blog.value, () => {
+//   const hiddenEditor = new Quill('#hidden-editor')
+//   hiddenEditor.setContents(JSON.parse(blog.value.body))
+//   // blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
+// })
 watch(blog.value, () => {
   const hiddenEditor = new Quill('#hidden-editor')
   hiddenEditor.setContents(JSON.parse(blog.value.body))
-  blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
-})
-
-// const blogContent = ref('')
-
-watch(blog.value, () => {
-  const hiddenEditor = new Quill('#hidden-editor')
-  hiddenEditor.setContents(JSON.parse(blog.value.body))
-  blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
+  // blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
 })
 
 const blogContent = ref('')
-// need to get watch to convert the body back into html and then display it as raw html. 
-watch(blog, () => {
-  const hiddenEditor = new Quill('#hidden-editor')
-  hiddenEditor.setContents(JSON.parse(blog.value.body))
-  blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
-})
-// const likerProfiles = computed(() => AppState.likerProfiles)
-
-
-
-// const blogContent = ref('')
-
 watch(blog.value, () => {
   const hiddenEditor = new Quill('#hidden-editor')
   hiddenEditor.setContents(JSON.parse(blog.value.body))
   blogContent.value = hiddenEditor.getSemanticHTML()
 })
+// watch(blog.value, () => {
+//   const hiddenEditor = new Quill('#hidden-editor')
+//   hiddenEditor.setContents(JSON.parse(blog.value.body))
+//   blogContent.value = hiddenEditor.getSemanticHTML()
+// })
 onMounted(() => {
   getBlogById()
   // getLikesByBlogId()
@@ -142,13 +130,13 @@ async function getLikesByBlogId() {
   <div class="container p-2">
     <div class="row">
       <div class="col-12">
-        <span v-if="account?.id == blog?.creatorId">
-          <RouterLink :to="{ name: 'Edit Blog', params: { blogId: route.params.blogId } }">
+        <!-- <span v-if="account?.id == blog?.creatorId"> -->
+        <!-- <RouterLink :to="{ name: 'Edit Blog', params: { blogId: route.params.blogId } }">
             <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
           </RouterLink>
           <button @click="publishBlog()" class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
           <button @click="deleteBlog()" class="shadow justify-content-end btn btn-orange ms-1">Delete</button>
-        </span>
+        </span> -->
       </div>
     </div>
   </div>
@@ -177,8 +165,8 @@ async function getLikesByBlogId() {
     </div>
     <section>
       <!--NOTE JUSTIN YOUR STUFF IS HERE::: v-if="account" @click="createLike()" -->
-      <button class="btn btn-orange rounded-pill" v-if="account">like
-        me</button>
+      <!-- <button class="btn btn-orange rounded-pill" v-if="account">like -->
+      <!-- me</button> -->
 
     </section>
   </section>
