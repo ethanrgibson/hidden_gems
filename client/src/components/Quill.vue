@@ -109,6 +109,14 @@ async function saveAndExit() {
   <div v-html="blogContent"></div>
   <div id="hidden-editor" class="d-none"></div>
 </div>  -->
+  =======
+  <!-- this is the visualization of the content from the form -->
+  <!-- <div>
+  testString
+  <div v-html="blogContent"></div>
+  <div id="hidden-editor" class="d-none"></div>
+</div> -->
+  >>>>>>> 0eaef24 (active blog no display watcher)
 
   <form @submit.prevent="saveBody()">
 
