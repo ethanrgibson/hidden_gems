@@ -18,11 +18,11 @@ const blog = computed(() => AppState.blog)
 const account = computed(() => AppState.account)
 
 const blogContent = ref('')
-// need to get watch to convert the body back into html and then display it as raw html. 
-watch(blog, () => {
+
+watch(blog.value, () => {
   const hiddenEditor = new Quill('#hidden-editor')
   hiddenEditor.setContents(JSON.parse(blog.value.body))
-  blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
+  blogContent.value = hiddenEditor.getSemanticHTML()
 })
 
 // const blogContent = ref('')
