@@ -115,6 +115,14 @@ async function saveAndExit() {
   <div v-html="blogContent"></div>
   <div id="hidden-editor" class="d-none"></div>
 </div>  -->
+  =======
+  <!-- this is the visualization of the content from the form -->
+  <!-- <div>
+  testString
+  <div v-html="blogContent"></div>
+  <div id="hidden-editor" class="d-none"></div>
+</div> -->
+  >>>>>>> 0eaef24 (active blog no display watcher)
 
   <form @submit.prevent="saveBody()">
 
@@ -128,7 +136,19 @@ async function saveAndExit() {
       [{ align: [] }], // Alignment options
       ['clean'] // Clear formatting
     ]" />
+
+    <<<<<<< HEAD=======<QuillEditor ref="Qeditor" @update:content="updateAndSave()" theme="snow" :toolbar="[
+      [{ header: [1, 2, 3, 4, 5, 6, false] }], // Header levels
+      [{ font: [] }], // Font family
+      [{ size: ['small', false, 'large', 'huge'] }], // Font size
+      ['bold', 'italic', 'underline', 'strike'], // Formatting buttons
+      [{ list: 'ordered' }, { list: 'bullet' }], // Lists
+      [{ indent: '-1' }, { indent: '+1' }], // Indentation
+      [{ align: [] }], // Alignment options
+      ['clean'] // Clear formatting
+    ]" />
     <button type="submit" class="btn btn-warning">Save</button>
+    >>>>>>> 0eaef24 (active blog no display watcher)
   </form>
   <button @click="saveQuillChanges()" class="btn btn-warning">SAVE</button>
   <button @click="saveAndExit()" class="btn btn-warning">Save and exit editor</button>
