@@ -22,6 +22,7 @@ const blogContent = ref('')
 let timer
 function updateAndSave() {
   clearTimeout(timer)
+
   timer = setTimeout(saveQuillChanges, 30000);
 }
 async function saveQuillChanges() {
@@ -57,7 +58,7 @@ async function saveBody(body) {
   const blogId = route.params.blogId
   await blogsService.saveBlog(blogId, body)
   logger.log('SAVING')
->>>>>>> 0eaef24 (active blog no display watcher)
+>>>>>>> 35bd451 (active blog no display watcher)
 }
 
 const Qeditor = useTemplateRef('Qeditor')
