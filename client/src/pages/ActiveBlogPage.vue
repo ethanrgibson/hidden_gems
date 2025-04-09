@@ -40,7 +40,17 @@ watch(blog, () => {
   hiddenEditor.setContents(JSON.parse(blog.value.body))
   blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
 })
+// const likerProfiles = computed(() => AppState.likerProfiles)
 
+
+
+// const blogContent = ref('')
+
+watch(blog.value, () => {
+  const hiddenEditor = new Quill('#hidden-editor')
+  hiddenEditor.setContents(JSON.parse(blog.value.body))
+  blogContent.value = hiddenEditor.getSemanticHTML()
+})
 onMounted(() => {
   getBlogById()
   // getLikesByBlogId()

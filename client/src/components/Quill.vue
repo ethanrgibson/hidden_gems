@@ -12,7 +12,7 @@ const route = useRoute()
 const router = useRouter()
 
 const testString = ref('')
-const blogContent = ref('')
+// const blogContent = ref('')
 
 // watch(testString, ()=>{
 //   const hiddenEditor = new Quill('#hidden-editor')
@@ -58,7 +58,6 @@ async function saveBody(body) {
 //   const blogId = route.params.blogId
 //   await blogsService.saveBlog(blogId, body)
 //   logger.log('SAVING')
-//     (active blog no display watcher)
 // }
 
 const Qeditor = useTemplateRef('Qeditor')
@@ -138,7 +137,6 @@ async function saveAndExit() {
       ['clean'] // Clear formatting
     ]" />
     <button type="submit" class="btn btn-warning">Save</button>
-    >>>>>>> 0eaef24 (active blog no display watcher)
   </form>
   <button @click="saveQuillChanges()" class="btn btn-warning">SAVE</button>
   <button @click="saveAndExit()" class="btn btn-warning">Save and exit editor</button>
