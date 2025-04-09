@@ -1,6 +1,7 @@
 <script setup>
 import { AppState } from '@/AppState.js';
 import { blogsService } from '@/services/BlogsService.js';
+import { likeService } from '@/services/LikeService.js';
 import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
 import { computed, onMounted } from 'vue';
@@ -11,10 +12,11 @@ const route = useRoute()
 const router = useRouter()
 
 const blog = computed(() => AppState.blog)
-const account = computed(()=> AppState.account)
+const account = computed(() => AppState.account)
 
 onMounted(() => {
   getBlogById()
+  getLikesByBlogId()
 })
 
 async function getBlogById() {
@@ -27,7 +29,7 @@ async function getBlogById() {
     logger.error(`couldn't get blog`, error)
   }
 }
-async function deleteBlog(){
+async function deleteBlog() {
   try {
     const confirmed = await Pop.confirm('Deleting blog', 'are you sure you would like to delete this blog?', 'yes', 'no')
     if (!confirmed) {
@@ -35,9 +37,9 @@ async function deleteBlog(){
     }
     const blogId = route.params.blogId
     await blogsService.deleteBlog(blogId)
-    router.push({ name: 'Campfire',})
+    router.push({ name: 'Campfire', })
   }
-  catch (error){
+  catch (error) {
     Pop.error(error);
   }
 }
@@ -47,10 +49,30 @@ async function publishBlog() {
     if (!confirmed) {
       return
     } const blogId = route.params.blogId
-      await blogsService.publishBlog(blogId)
+    await blogsService.publishBlog(blogId)
   }
-  catch (error){
+  catch (error) {
     Pop.error(error);
+  }
+}
+
+async function createLike() {
+  try {
+    const likeData = { type: 'Blog', otherId: route.params.blogId }
+    console.log(`likeData`, likeData)
+    await likeService.createLike(likeData)
+  } catch (error) {
+    Pop.error(error, `no likes yet`)
+  }
+}
+
+async function getLikesByBlogId() {
+  try {
+    const blogId = route.params.blogId
+    await likeService.getLikesByBlogId(blogId)
+  } catch (error) {
+    Pop.error(error, `Coundnt get liker`)
+    logger.error(`conldnt get likers by id`)
   }
 }
 
@@ -83,8 +105,8 @@ async function publishBlog() {
         <div col-12 class="">
           <span v-if="account?.id == blog?.creatorId">
             <RouterLink :to="{ name: 'Edit Blog', params: { blogId: route.params.blogId } }">
-            <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
-          </RouterLink>
+              <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
+            </RouterLink>
             <button @click="publishBlog()" class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
             <button @click="deleteBlog()" class="shadow justify-content-end btn btn-orange ms-1">Delete</button>
           </span>
@@ -114,7 +136,11 @@ async function publishBlog() {
       </p>
     </div>
   </div>
-  <!-- <MapComponents /> -->
+  <div>
+    <button @click="createLike()">like me </button>
+  </div>
+  <!-- <Map(Components /> -->
+
 
 </template>
 
