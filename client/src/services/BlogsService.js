@@ -5,7 +5,9 @@ import { AppState } from "@/AppState.js"
 
 class BlogsService {
   async saveBlog(blogId, blogBody) {
-    const blogToUpdate = AppState.blogs.find(blog => blog.id == blogId)
+    const blogToUpdate = AppState.blog
+    logger.log(blogToUpdate)
+    // const blogToUpdate = AppState.blogs.find(blog => blog.id == blogId)
     blogToUpdate.body = blogBody
 
     const response = await api.put(`api/blogs/${blogId}`, blogToUpdate)
