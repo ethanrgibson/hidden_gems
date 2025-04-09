@@ -165,14 +165,14 @@ async function getLikesByBlogId() {
         </div>
       </div>
     </div>
-
-    <div>
+    <section>
       <!--NOTE JUSTIN YOUR STUFF IS HERE::: v-if="account" @click="createLike()" -->
       <button class="btn btn-orange rounded-pill" v-if="account">like
         me</button>
 
-    </div>
+    </section>
   </section>
+
   <!-- <Map(Components /> -->
 
 
