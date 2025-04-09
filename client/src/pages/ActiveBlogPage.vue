@@ -15,9 +15,9 @@ const route = useRoute()
 const router = useRouter()
 
 const blog = computed(() => AppState.blog)
-const account = computed(() => AppState.account)
+// const account = computed(() => AppState.account)
 
-const blogContent = ref('')
+// const blogContent = ref('')
 
 watch(blog.value, () => {
   const hiddenEditor = new Quill('#hidden-editor')
@@ -33,6 +33,13 @@ watch(blog.value, () => {
   blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
 })
 
+const blogContent = ref('')
+
+watch(blog.value, () => {
+  const hiddenEditor = new Quill('#hidden-editor')
+  hiddenEditor.setContents(JSON.parse(blog.value.body))
+  blogContent.value = hiddenEditor.getSemanticHTML()
+})
 onMounted(() => {
   getBlogById()
   // getLikesByBlogId()
