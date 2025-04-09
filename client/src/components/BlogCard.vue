@@ -1,13 +1,24 @@
 <script setup>
 import { Blog } from '@/models/Blog.js';
+import { logger } from '@/utils/Logger.js';
+import { Pop } from '@/utils/Pop.js';
+import { useRoute } from 'vue-router';
 
+const route = useRoute()
 
 
 defineProps({
   blogProp: { type: Blog, required: true }
 })
+async function createLike() {
+  try {
+    const likesData = { Blog: route.params.blog }
 
-
+  } catch (error) {
+    Pop.error(error, `no likes man`)
+    logger.error(`NO NO LIKIE`)
+  }
+}
 
 
 </script>
