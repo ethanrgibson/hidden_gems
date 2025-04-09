@@ -5,6 +5,7 @@ import { blogsService } from '@/services/BlogsService.js';
 import { likeService } from '@/services/LikeService.js';
 import { logger } from '@/utils/Logger.js';
 import Quill from "quill";
+
 import { Pop } from '@/utils/Pop.js';
 import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
@@ -19,10 +20,16 @@ const account = computed(() => AppState.account)
 const blogContent = ref('')
 
 
-// need to get watch to convert the body back into html and then display it as raw html. 
+
+
+watch(blog.value, () => {
+  const hiddenEditor = new Quill('#hidden-editor')
+  hiddenEditor.setContents(JSON.parse(blog.value.body))
+  blogContent.value = hiddenEditor.getSemanticHTML()
+})
 onMounted(() => {
   getBlogById()
-  getLikesByBlogId()
+  // getLikesByBlogId()
 })
 
 async function getBlogById() {
@@ -62,26 +69,6 @@ async function publishBlog() {
   }
 }
 
-async function createLike() {
-  try {
-    const likeData = { type: 'Blog', otherId: route.params.blogId }
-    logger.log(`likeData`, likeData)
-    await likeService.createLike(likeData)
-  } catch (error) {
-    Pop.error(error, `no likes yet`)
-    logger.error(`COULD NOT CRATE LIKE `)
-  }
-}
-
-async function getLikesByBlogId() {
-  try {
-    const blogId = route.params.blogId
-    await likeService.getLikesByBlogId(blogId)
-  } catch (error) {
-    Pop.error(error, `Could not get liker`)
-    logger.error(`could not  get likers by id`, error)
-  }
-}
 
 </script>
 
