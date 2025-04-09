@@ -9,13 +9,13 @@ import { useRoute } from "vue-router";
 const route = useRoute()
 
 const testString = ref('')
-const blogContent = ref('')
+// const blogContent = ref('')
 
-watch(testString, ()=>{
-  const hiddenEditor = new Quill('#hidden-editor')
-  hiddenEditor.setContents(JSON.parse(testString.value))
-  blogContent.value = hiddenEditor.getSemanticHTML()
-})
+// watch(testString, ()=>{
+//   const hiddenEditor = new Quill('#hidden-editor')
+//   hiddenEditor.setContents(JSON.parse(testString.value))
+//   blogContent.value = hiddenEditor.getSemanticHTML()
+// })
 let timer
 function updateAndSave() {
   clearTimeout(timer)
@@ -24,28 +24,27 @@ function updateAndSave() {
     const editorContent = Qeditor.value.getContents()
     const stringyContent = JSON.stringify(editorContent)
     testString.value  = stringyContent
-    saveBody()
+    saveBody(stringyContent)
   }, 1000);
 }
 
-async function saveBody(){
+async function saveBody(body){
   const blogId = route.params.blogId
-  const body = blogContent.value
   await blogsService.saveBlog(blogId, body)
   logger.log('SAVING')
 }
 
 const Qeditor = useTemplateRef('Qeditor')
 
-async function saveBlog() {
-  const editorContent = Qeditor.value.getContents()
-  const stringyContent = JSON.stringify(editorContent)
-  testString.value  = stringyContent
-  // logger.log('html', stringyContent, 'blogcontent', blogContent)
-  // logger.log('onUpdate', event)
-  // logger.log('saving form', Qeditor.value.getContents())
-  // await blogsService.saveBlog(blogId, stringyContent)
-}
+// async function saveBlog() {
+//   const editorContent = Qeditor.value.getContents()
+//   const stringyContent = JSON.stringify(editorContent)
+//   testString.value  = stringyContent
+//   // logger.log('html', stringyContent, 'blogcontent', blogContent)
+//   // logger.log('onUpdate', event)
+//   // logger.log('saving form', Qeditor.value.getContents())
+//   // await blogsService.saveBlog(blogId, stringyContent)
+// }
 
 
 </script>
@@ -54,15 +53,15 @@ async function saveBlog() {
 <template>
 
 <!-- this is the visualization of the content from the form -->
-<div>
+<!-- <div>
   testString
   <div v-html="blogContent"></div>
   <div id="hidden-editor" class="d-none"></div>
-</div>
+</div> -->
 
   <form @submit.prevent="saveBody()">
 
-    <QuillEditor ref="Qeditor" @update:content="updateAndSave"
+    <QuillEditor ref="Qeditor" @update:content="updateAndSave()"
         theme="snow"
         :toolbar="[
           [{ header: [1, 2, 3, 4, 5, 6, false] }], // Header levels

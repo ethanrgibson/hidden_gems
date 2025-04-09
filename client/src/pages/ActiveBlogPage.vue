@@ -2,8 +2,9 @@
 import { AppState } from '@/AppState.js';
 import { blogsService } from '@/services/BlogsService.js';
 import { logger } from '@/utils/Logger.js';
+import Quill from "quill";
 import { Pop } from '@/utils/Pop.js';
-import { computed, onMounted } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute()
@@ -13,6 +14,13 @@ const router = useRouter()
 const blog = computed(() => AppState.blog)
 const account = computed(()=> AppState.account)
 
+const blogContent = ref('')
+
+watch(blog.value, ()=>{
+  const hiddenEditor = new Quill('#hidden-editor')
+  hiddenEditor.setContents(JSON.parse(blog.value.body))
+  blogContent.value = hiddenEditor.getSemanticHTML()
+})
 onMounted(() => {
   getBlogById()
 })
@@ -53,6 +61,7 @@ async function publishBlog() {
     Pop.error(error);
   }
 }
+
 
 </script>
 
@@ -105,12 +114,14 @@ async function publishBlog() {
 
 
 
-
+ 
 
   <div v-if="blog" class="container text-shadow bg-light text-bg">
-    <div class="text-center">
-      <p class="text-center my-5  text-shadow p-3 text-bg">
-        {{ blog.body }}
+    <div class="">
+      <div v-html="blogContent"></div>
+      <div id="hidden-editor" class="d-none"></div>
+      <p class=" my-5 text-shadow p-3 text-bg">
+        {{ blogContent }}
       </p>
     </div>
   </div>

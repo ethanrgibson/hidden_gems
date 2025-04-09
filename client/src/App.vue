@@ -1,4 +1,5 @@
 <script setup>
+import { AppState } from './AppState.js';
 import ModalComponent from './components/ModalComponent.vue';
 import Navbar from './components/Navbar.vue';
 import { RouterView } from 'vue-router';
