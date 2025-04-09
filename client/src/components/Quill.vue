@@ -21,6 +21,7 @@ const blogContent = ref('')
 let timer
 function updateAndSave() {
   clearTimeout(timer)
+
   timer = setTimeout(saveQuillChanges, 30000);
 }
 async function saveQuillChanges() {
@@ -43,6 +44,10 @@ async function saveBody(body) {
     Pop.error(error, 'Could Not Save Blog');
   }
 =======
+  timer = setTimeout(() => {
+    logger.log('im working')
+    const editorContent = Qeditor.value.getContents()
+    const stringyContent = JSON.stringify(editorContent)
     testString.value  = stringyContent
     saveBody(stringyContent)
   }, 1000);
@@ -52,7 +57,7 @@ async function saveBody(body){
   const blogId = route.params.blogId
   await blogsService.saveBlog(blogId, body)
   logger.log('SAVING')
->>>>>>> 0eaef24 (active blog no display watcher)
+>>>>>>> 35bd451 (active blog no display watcher)
 }
 
 const Qeditor = useTemplateRef('Qeditor')
@@ -84,6 +89,8 @@ async function saveAndExit() {
 
   <<<<<<< HEAD <!-- this is the visualization of the content from the form -->
     <!-- <div>
+  <<<<<<< HEAD <!-- this is the visualization of the content from the form -->
+    <!-- <div>
   testString
   <div v-html="blogContent"></div>
   <div id="hidden-editor" class="d-none"></div>
@@ -95,8 +102,16 @@ async function saveAndExit() {
   <div v-html="blogContent"></div>
   <div id="hidden-editor" class="d-none"></div>
 </div>  -->
+    =======
+    <!-- this is the visualization of the content from the form -->
+    <!-- <div>
+  testString
+  <div v-html="blogContent"></div>
+  <div id="hidden-editor" class="d-none"></div>
+</div> -->
+    >>>>>>> 35bd451 (active blog no display watcher)
 
-    <form @submit.prevent="saveBody()">
+    <form>
 
       <QuillEditor ref="Qeditor" @update:content="updateAndSave()" theme="snow" :toolbar="[
         [{ header: [1, 2, 3, 4, 5, 6, false] }], // Header levels
@@ -109,6 +124,18 @@ async function saveAndExit() {
         ['clean'] // Clear formatting
       ]" />
 
+      <<<<<<< HEAD=======<QuillEditor ref="Qeditor" @update:content="updateAndSave()" theme="snow" :toolbar="[
+        [{ header: [1, 2, 3, 4, 5, 6, false] }], // Header levels
+        [{ font: [] }], // Font family
+        [{ size: ['small', false, 'large', 'huge'] }], // Font size
+        ['bold', 'italic', 'underline', 'strike'], // Formatting buttons
+        [{ list: 'ordered' }, { list: 'bullet' }], // Lists
+        [{ indent: '-1' }, { indent: '+1' }], // Indentation
+        [{ align: [] }], // Alignment options
+        ['clean'] // Clear formatting
+      ]" />
+      <button type="submit" class="btn btn-warning">Save</button>
+      >>>>>>> 35bd451 (active blog no display watcher)
     </form>
     <button @click="saveQuillChanges()" class="btn btn-warning">SAVE</button>
     <button @click="saveAndExit()" class="btn btn-warning">Save and exit editor</button>

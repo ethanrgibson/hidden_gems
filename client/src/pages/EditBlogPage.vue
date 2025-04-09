@@ -7,16 +7,28 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute()
 
+<<<<<<< HEAD
 onMounted(() => {
   getActiveBlogById()
 })
 
 async function getActiveBlogById() {
+=======
+onMounted(()=>{
+  getActiveBlogById()
+})
+
+async function getActiveBlogById(){
+>>>>>>> 35bd451 (active blog no display watcher)
   try {
     const blogId = route.params.blogId
     await blogsService.getBlogById(blogId)
   }
+<<<<<<< HEAD
   catch (error) {
+=======
+  catch (error){
+>>>>>>> 35bd451 (active blog no display watcher)
     Pop.error(error);
   }
 }
