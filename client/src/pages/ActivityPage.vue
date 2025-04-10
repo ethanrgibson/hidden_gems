@@ -134,7 +134,15 @@ async function getFeaturedPictures() {
     </div>
   </section>
   <section>
-    {{ featuredPictures }}
+    <div class="container">
+      <div class="row">
+        <div v-for="picture in featuredPictures" :key="picture.id" class="col-md-4 p-0">
+          <div>
+            <img :src="picture.imgUrl" alt="" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
