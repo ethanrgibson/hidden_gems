@@ -22,7 +22,7 @@ const blogContent = ref('')
 watch(blog.value, () => {
   const hiddenEditor = new Quill('#hidden-editor')
   hiddenEditor.setContents(JSON.parse(blog.value.body))
-  blogContent.value = hiddenEditor.getSemanticHTML()
+  blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
 })
 
 // const blogContent = ref('')
@@ -169,7 +169,6 @@ async function getLikesByBlogId() {
 
 
   </section>
-
 
 
 
