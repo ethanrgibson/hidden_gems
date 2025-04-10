@@ -1,0 +1,466 @@
+{
+	"info": {
+		"_postman_id": "85834ca8-e021-4103-8a15-ea6a648c7a39",
+		"name": "Hidden Gems API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42991583",
+		"_collection_link": "https://hidden-gems.postman.co/workspace/Hidden-Gems-Workspace~0b3f63e3-46f4-4036-8117-77269e3af2e9/collection/42991583-85834ca8-e021-4103-8a15-ea6a648c7a39?action=share&source=collection_link&creator=42991583"
+	},
+	"item": [
+		{
+			"name": "Blogs",
+			"item": [
+				{
+					"name": "Create Blog",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"title\": \"I hate camping!\",\n    \"body\": \"I hate camping and hiking and overlanding. I am the bad token!\",\n    \"coverImg\": \"https://images.unsplash.com/photo-1510251197878-a2e6d2cb590c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\n    \"isPublished\": false,\n    \"category\": \"camping\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/blogs",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"blogs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Blogs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/blogs/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"blogs",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get blog by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/blogs/67eec6c007d1a537b21fca41",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"blogs",
+								"67eec6c007d1a537b21fca41"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Blog",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\n    \"isPublished\": \"true\"\n  }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/blogs/67eda5d16390f8d70c14e185",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"blogs",
+								"67eda5d16390f8d70c14e185"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Blog",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/blogs/67f0390f40a66a69dfd6f7e5",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"blogs",
+								"67f0390f40a66a69dfd6f7e5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{auth1}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Blog Pictures",
+			"item": [
+				{
+					"name": "Upload Pictures",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"imgUrl\": \"https://images.unsplash.com/photo-1532339142463-fd0a8979791a?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D\",\n    \"blogId\": \"67eec60e07d1a537b21fca3c\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/pictures",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"pictures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Pictures by Blog ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/blogs/67eec60e07d1a537b21fca3c/pictures",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"blogs",
+								"67eec60e07d1a537b21fca3c",
+								"pictures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Picture By Id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/pictures/67ef0cdd16c0b02c26bed2e5",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"pictures",
+								"67ef0cdd16c0b02c26bed2e5"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{auth1}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "LIkes",
+			"item": [
+				{
+					"name": "Create New Like",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n\"otherId\" : \"67eecfbb68051c04edb5af6a\",\n\"type\":  \"BlogPicture\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/api/likes",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"likes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Likes for Blog, Accounts, Locations, Blog Pictures",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/likes?otherId=67eec6c007d1a537b21fca41&populate=creator",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"likes"
+							],
+							"query": [
+								{
+									"key": "otherId",
+									"value": "67eec6c007d1a537b21fca41"
+								},
+								{
+									"key": "populate",
+									"value": "creator"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Like",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/api/likes/67f0432e42c94686b0510e26",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"api",
+								"likes",
+								"67f0432e42c94686b0510e26"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{auth1}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "BlogLocation",
+			"item": [
+				{
+					"name": "Create Blog Location",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Locations",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{auth1}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "auth1",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "auth2",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
