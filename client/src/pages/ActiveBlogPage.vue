@@ -69,6 +69,27 @@ async function publishBlog() {
 }
 
 
+async function createLike() {
+  try {
+    const likeData = { type: 'Blog', otherId: route.params.blogId }
+    console.log(`likeData`, likeData)
+    await likeService.createLike(likeData)
+  } catch (error) {
+    Pop.error(error, `no likes yet`)
+    logger.error(`COULD NOT CRATE LIKE `)
+  }
+}
+
+async function getLikesByBlogId() {
+  try {
+    const blogId = route.params.blogId
+    await likeService.getLikesByBlogId(blogId)
+  } catch (error) {
+    Pop.error(error, `Coundnt get liker`)
+    logger.error(`conldnt get likers by id`, error)
+  }
+}
+
 </script>
 
 
@@ -136,13 +157,8 @@ async function publishBlog() {
         me</button>
 
     </div>
-
-    <MapComponents />
-
-
   </section>
-
-  <!-- <MapComponents /> -->
+  <!-- <Map(Components /> -->
 
 
 </template>
