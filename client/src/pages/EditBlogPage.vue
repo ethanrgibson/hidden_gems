@@ -7,16 +7,16 @@ import { useRoute } from 'vue-router';
 
 const route = useRoute()
 
-onMounted(()=>{
+onMounted(() => {
   getActiveBlogById()
 })
 
-async function getActiveBlogById(){
+async function getActiveBlogById() {
   try {
     const blogId = route.params.blogId
     await blogsService.getBlogById(blogId)
   }
-  catch (error){
+  catch (error) {
     Pop.error(error);
   }
 }
@@ -24,7 +24,7 @@ async function getActiveBlogById(){
 
 
 <template>
-<div class="bg-light">
+  <div class="bg-light yeet">
     <Quill />
 
   </div>
@@ -32,5 +32,7 @@ async function getActiveBlogById(){
 
 
 <style lang="scss" scoped>
-
+.yeet {
+  height: 60dvh;
+}
 </style>
