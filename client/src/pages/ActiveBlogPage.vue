@@ -34,12 +34,13 @@ watch(blog.value, () => {
 })
 
 const blogContent = ref('')
-
-watch(blog.value, () => {
+// need to get watch to convert the body back into html and then display it as raw html. 
+watch(blog, () => {
   const hiddenEditor = new Quill('#hidden-editor')
   hiddenEditor.setContents(JSON.parse(blog.value.body))
-  blogContent.value = hiddenEditor.getSemanticHTML()
+  blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
 })
+
 onMounted(() => {
   getBlogById()
   // getLikesByBlogId()

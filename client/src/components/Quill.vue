@@ -15,7 +15,7 @@ const router = useRouter()
 
 
 const testString = ref('')
-// const blogContent = ref('')
+const blogContent = ref('')
 
 // watch(testString, ()=>{
 //   const hiddenEditor = new Quill('#hidden-editor')
