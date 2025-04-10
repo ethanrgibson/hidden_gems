@@ -7,8 +7,10 @@ import { QuillEditor } from "@vueup/vue-quill";
 import { ref, useTemplateRef, } from "vue";
 import { useRoute, useRouter } from "vue-router";
 
+
 const route = useRoute()
 const router = useRouter()
+
 
 const testString = ref('')
 const blogContent = ref('')
@@ -21,7 +23,6 @@ const blogContent = ref('')
 let timer
 function updateAndSave() {
   clearTimeout(timer)
-
   timer = setTimeout(saveQuillChanges, 30000);
 }
 async function saveQuillChanges() {

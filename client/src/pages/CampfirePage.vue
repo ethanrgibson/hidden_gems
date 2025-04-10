@@ -7,36 +7,37 @@ import { Pop } from '@/utils/Pop.js';
 import { computed, onMounted, ref } from 'vue';
 
 onMounted(() => {
-  getAllBlogs()
-})
+  onMounted(() => {
+    getAllBlogs()
+  })
 
 
 
 
-const account = computed(() => AppState.account)
+  const account = computed(() => AppState.account)
 
-const blogs = computed(() => {
-  if (filterCategory.value == 'all') {
-    return AppState.blogs
-  } if (filterCategory.value == 'myBlogs') {
-    return AppState.blogs.filter(blog => blog.creatorId == account?.value.id)
+  const blogs = computed(() => {
+    if (filterCategory.value == 'all') {
+      return AppState.blogs
+    } if (filterCategory.value == 'myBlogs') {
+      return AppState.blogs.filter(blog => blog.creatorId == account?.value.id)
+    }
+    return AppState.blogs.filter(blog => blog.category == filterCategory.value)
+
+  })
+
+
+  async function getAllBlogs() {
+    try {
+      await blogsService.getAllBlogs()
+    }
+    catch (error) {
+      Pop.error(error, "could not get blogs");
+      logger.error('could not get blogs', error)
+    }
   }
-  return AppState.blogs.filter(blog => blog.category == filterCategory.value)
 
-})
-
-
-async function getAllBlogs() {
-  try {
-    await blogsService.getAllBlogs()
-  }
-  catch (error) {
-    Pop.error(error, "could not get blogs");
-    logger.error('could not get blogs', error)
-  }
-}
-
-const filterCategory = ref('all')
+  const filterCategory = ref('all')
 
 
 </script>
