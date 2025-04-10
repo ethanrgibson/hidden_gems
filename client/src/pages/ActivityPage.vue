@@ -5,34 +5,27 @@ import ExploreTopBlogsComponent from '@/components/ExploreTopBlogsComponent.vue'
 import { blogPicturesService } from '@/services/BlogPicturesService.js';
 import { blogsService } from '@/services/BlogsService.js';
 import { Pop } from '@/utils/Pop.js';
-import { computed, onMounted } from 'vue';
+import { computed, watch } from 'vue';
 import { useRoute } from 'vue-router';
-
-
-onMounted(() => {
-  getAllBlogs()
-  getFeaturedPictures()
-})
-
 
 const route = useRoute()
 
-const campingBlogs = computed(() => {
-  return AppState.blogs.filter(blog => blog.category == 'camping')
-})
-const hikingBlogs = computed(() => {
-  return AppState.blogs.filter(blog => blog.category == 'hiking')
-})
-const overLandingBlogs = computed(() => {
-  return AppState.blogs.filter(blog => blog.category == 'overlanding')
-})
 
+watch(route, () => {
+  getAllBlogs()
+  getFeaturedPictures()
+}, { immediate: true })
+
+const blogs = computed(() => AppState.blogs)
 const featuredPictures = computed(() => AppState.blogPictures)
 
 
 async function getAllBlogs() {
+
+  const activityName = route.params.activityName
+
   try {
-    await blogsService.getAllBlogs()
+    await blogsService.getBlogByCategory(activityName)
   }
   catch (error) {
     Pop.error(error);
@@ -74,7 +67,7 @@ async function getFeaturedPictures() {
       <ExploreTopBlogsComponent />
       <div class="container-fluid">
         <div class="row justify-content-center">
-          <div v-for="b in campingBlogs" :key="b.id" class="col-md-9">
+          <div v-for="b in blogs" :key="b.id" class="col-md-9">
             <BlogCard v-if="b.isPublished" :blogProp="b" />
           </div>
         </div>
@@ -100,7 +93,7 @@ async function getFeaturedPictures() {
       <ExploreTopBlogsComponent />
       <div class="container-fluid">
         <div class="row justify-content-center">
-          <div v-for="b in hikingBlogs" :key="b.id" class="col-md-9">
+          <div v-for="b in blogs" :key="b.id" class="col-md-9">
             <BlogCard v-if="b.isPublished" :blogProp="b" />
           </div>
         </div>
@@ -126,24 +119,34 @@ async function getFeaturedPictures() {
       <ExploreTopBlogsComponent />
       <div class="container-fluid">
         <div class="row justify-content-center">
-          <div v-for="b in overLandingBlogs" :key="b.id" class="col-md-9">
+          <div v-for="b in blogs" :key="b.id" class="col-md-9">
             <BlogCard v-if="b.isPublished" :blogProp="b" />
           </div>
         </div>
       </div>
     </div>
   </section>
-  <section>
-    <div class="container">
-      <div class="row">
-        <!-- TODO need to add limiter in backend so we only get 6  r a n d o m  pictures when the get request is called -->
-          <div v-for="picture in featuredPictures" :key="picture.id" class="col-md-4 p-0">
-            <div>
-              <img :src="picture.imgUrl" alt="" class="img-fluid">
-            </div>
+  <div class="container-fluid bg-light">
+    <div class="row">
+      <div class="col-12">
+        <div class="my-3 p-2">
+          <div class="border-bottom border-warning">
+            <p class="fs-2">Featured Pictures</p>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div v-for="picture in featuredPictures" :key="picture.id" class="col-md-4 p-0">
+          <div class="my-2">
+            <img :src="picture.imgUrl" alt="" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 

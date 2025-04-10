@@ -35,7 +35,8 @@ export class BlogsController extends BaseController {
 
   async getAllBlogs(request, response, next) {
     try {
-      const blogs = await blogService.getAllBlogs()
+      const query = request.query
+      const blogs = await blogService.getAllBlogs(query)
       response.send(blogs)
     } catch (error) {
       next(error)
