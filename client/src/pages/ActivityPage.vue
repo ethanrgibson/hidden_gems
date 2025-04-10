@@ -1,22 +1,37 @@
 <script setup>
 import { AppState } from '@/AppState.js';
 import BlogCard from '@/components/BlogCard.vue';
+import { blogsService } from '@/services/BlogsService.js';
+import { Pop } from '@/utils/Pop.js';
 import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 
-onMounted
+onMounted(() => {
+  getAllBlogs()
+})
 
 
 const route = useRoute()
 
-
-const blogs = computed(() => {
-
+const campingBlogs = computed(() => {
+  return AppState.blogs.filter(blog => blog.category == 'camping')
+})
+const hikingBlogs = computed(() => {
+  return AppState.blogs.filter(blog => blog.category == 'hiking')
+})
+const overLandingBlogs = computed(() => {
   return AppState.blogs.filter(blog => blog.category == 'overlanding')
-
 })
 
+async function getAllBlogs() {
+  try {
+    await blogsService.getAllBlogs()
+  }
+  catch (error) {
+    Pop.error(error);
+  }
+}
 
 </script>
 
@@ -25,9 +40,19 @@ const blogs = computed(() => {
   <section>
     <div v-if="route.params.activityName == 'camping'">
       Waht's up campers?
+      <div>
+        <div v-for="b in campingBlogs" :key="b.id" class="col-md-12">
+          <BlogCard v-if="b.isPublished" :blogProp="b" />
+        </div>
+      </div>
     </div>
     <div v-if="route.params.activityName == 'hiking'">
       Whats up hikers?
+      <div>
+        <div v-for="b in hikingBlogs" :key="b.id" class="col-md-12">
+          <BlogCard v-if="b.isPublished" :blogProp="b" />
+        </div>
+      </div>
     </div>
     <div v-if="route.params.activityName == 'overlanding'">
       <div class="container-fluid">
@@ -57,8 +82,8 @@ const blogs = computed(() => {
           </div>
         </div>
       </div>
-      <div v-for="b in blogs" :key="b.id" class="col-md-12">
-        <BlogCard v-if="b.isPublished" :blogProp="b"/>
+      <div v-for="b in overLandingBlogs" :key="b.id" class="col-md-12">
+        <BlogCard v-if="b.isPublished" :blogProp="b" />
       </div>
     </div>
 
