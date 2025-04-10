@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import MapComponents from '@/components/MapComponents.vue';
 import { blogsService } from '@/services/BlogsService.js';
 import { likeService } from '@/services/LikeService.js';
 import { logger } from '@/utils/Logger.js';
@@ -146,7 +147,7 @@ async function getLikesByBlogId() {
 
     </div>
   </div>
-  <!-- <Map(Components /> -->
+  <MapComponents />
 
 
 </template>
