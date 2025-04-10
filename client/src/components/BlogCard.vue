@@ -40,11 +40,12 @@ async function createLike() {
           <img class=" profile-img" :src="blogProp.creator.picture" alt="">
           <div class="d-flex pt-2 flex-fill align-items-baseline justify-content-between">
             <span class="fs-4">{{ blogProp.creator.name }}</span>
-            <span class="text-gray">Published: {{ blogProp.createdAt.toLocaleDateString() }}</span>
+            <span v-if="blogProp.isPublished" class="text-gray"> Published: {{ blogProp.updatedAt.toLocaleDateString()
+              }}</span>
           </div>
         </div>
         <div class="pt-3 ">
-          <p><i>{{ blogProp.body }}</i></p>
+          <p><i>{{ blogProp.description }}</i></p>
         </div>
         <div class="d-flex justify-content-end">
           <p>{{ blogProp.createLike }}</p>
