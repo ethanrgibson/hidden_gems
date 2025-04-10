@@ -92,6 +92,7 @@ async function getLikesByBlogId() {
           </span>
           <img class="creator-img" :src="blog.creator.picture" alt="">
           <div class=" text-end fs-1 p-3 text-danger">
+            <span>0</span>
             <i class="mdi mdi-campfire"></i>
           </div>
         </div>
@@ -135,9 +136,10 @@ async function getLikesByBlogId() {
         {{ blog.body }}
       </p>
     </div>
-  </div>
-  <div>
-    <button @click="createLike()">like me </button>
+    <div>
+      <button @click="createLike()">like me
+      </button>
+    </div>
   </div>
   <!-- <Map(Components /> -->
 
