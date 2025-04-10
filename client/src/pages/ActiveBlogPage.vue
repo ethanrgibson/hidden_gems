@@ -62,36 +62,33 @@ async function publishBlog() {
       return
     } const blogId = route.params.blogId
     await blogsService.publishBlog(blogId)
-    await blogsService.publishBlog(blogId)
   }
   catch (error) {
-  catch (error) {
-      Pop.error(error);
-    }
+    Pop.error(error);
   }
-
-  async function createLike() {
-    try {
-      const likeData = { type: 'Blog', otherId: route.params.blogId }
-      console.log(`likeData`, likeData)
-      await likeService.createLike(likeData)
-    } catch (error) {
-      Pop.error(error, `no likes yet`)
-      logger.error(`COULD NOT CRATE LIKE `)
-    }
-  }
-
-  async function getLikesByBlogId() {
-    try {
-      const blogId = route.params.blogId
-      await likeService.getLikesByBlogId(blogId)
-    } catch (error) {
-      Pop.error(error, `Coundnt get liker`)
-      logger.error(`conldnt get likers by id`, error)
-    }
-  }
-
 }
+
+async function createLike() {
+  try {
+    const likeData = { type: 'Blog', otherId: route.params.blogId }
+    console.log(`likeData`, likeData)
+    await likeService.createLike(likeData)
+  } catch (error) {
+    Pop.error(error, `no likes yet`)
+    logger.error(`COULD NOT CRATE LIKE `)
+  }
+}
+
+async function getLikesByBlogId() {
+  try {
+    const blogId = route.params.blogId
+    await likeService.getLikesByBlogId(blogId)
+  } catch (error) {
+    Pop.error(error, `Coundnt get liker`)
+    logger.error(`conldnt get likers by id`, error)
+  }
+}
+
 </script>
 
 
@@ -153,12 +150,13 @@ async function publishBlog() {
       </div>
     </div>
     <div>
-      <button class="btn btn-orange rounded-pill" v-if="account" @click="createLike()">like
+      <!--NOTE JUSTIN YOUR STUFF IS HERE::: v-if="account" @click="createLike()" -->
+      <button class="btn btn-orange rounded-pill" v-if="account">like
         me</button>
 
     </div>
-    </div>
-    <!-- <Map(Components /> -->
+  </section>
+  <!-- <Map(Components /> -->
 
 
 </template>
