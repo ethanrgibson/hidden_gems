@@ -54,12 +54,12 @@ async function saveBody(body) {
   }, 1000);
 }
 
-async function saveBody(body) {
-  const blogId = route.params.blogId
-  await blogsService.saveBlog(blogId, body)
-  logger.log('SAVING')
-    (active blog no display watcher)
-}
+// async function saveBody(body) {
+//   const blogId = route.params.blogId
+//   await blogsService.saveBlog(blogId, body)
+//   logger.log('SAVING')
+//     (active blog no display watcher)
+// }
 
 const Qeditor = useTemplateRef('Qeditor')
 
@@ -128,17 +128,6 @@ async function saveAndExit() {
   <form @submit.prevent="saveBody()">
 
     <QuillEditor ref="Qeditor" @update:content="updateAndSave()" theme="snow" :toolbar="[
-      [{ header: [1, 2, 3, 4, 5, 6, false] }], // Header levels
-      [{ font: [] }], // Font family
-      [{ size: ['small', false, 'large', 'huge'] }], // Font size
-      ['bold', 'italic', 'underline', 'strike'], // Formatting buttons
-      [{ list: 'ordered' }, { list: 'bullet' }], // Lists
-      [{ indent: '-1' }, { indent: '+1' }], // Indentation
-      [{ align: [] }], // Alignment options
-      ['clean'] // Clear formatting
-    ]" />
-
-    <<<<<<< HEAD=======<QuillEditor ref="Qeditor" @update:content="updateAndSave()" theme="snow" :toolbar="[
       [{ header: [1, 2, 3, 4, 5, 6, false] }], // Header levels
       [{ font: [] }], // Font family
       [{ size: ['small', false, 'large', 'huge'] }], // Font size
