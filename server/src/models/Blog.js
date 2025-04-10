@@ -11,7 +11,8 @@ export const BlogSchema = new Schema(
     isPublished: { type: Boolean, required: true, default: false },
     category: { type: String, enum: ['camping', 'hiking', 'overlanding'] },
     locationId: { type: Schema.ObjectId, ref: 'BlogLocation' },
-    blogPicturesId: {type: Schema.ObjectId, ref: 'BlogPicture'}
+    blogPicturesId: { type: Schema.ObjectId, ref: 'BlogPicture' },
+    description: { type: String, required: true, minLength: 3, maxLength: 50 }
 
   },
 
