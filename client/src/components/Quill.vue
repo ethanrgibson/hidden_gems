@@ -55,11 +55,12 @@ async function saveBody(body) {
   }, 1000);
 }
 
-// async function saveBody(body) {
-//   const blogId = route.params.blogId
-//   await blogsService.saveBlog(blogId, body)
-//   logger.log('SAVING')
-// }
+async function saveBody(body) {
+  const blogId = route.params.blogId
+  await blogsService.saveBlog(blogId, body)
+  logger.log('SAVING');
+  (active blog no display watcher)
+}
 
 const Qeditor = useTemplateRef('Qeditor')
 
@@ -91,13 +92,6 @@ async function saveAndExit() {
   <!-- this is the visualization of the content from the form -->
   <!-- <div>
  this is the visualization of the content from the form -->
-  <!-- <div>
-  testString
-  <div v-html="blogContent"></div>
-  <div id="hidden-editor" class="d-none"></div>
-</div>  -->
-  =======
-  <!-- this is the visualization of the content from the form -->
   <!-- <div>
   testString
   <div v-html="blogContent"></div>
