@@ -71,7 +71,7 @@ async function publishBlog() {
 async function createLike() {
   try {
     const likeData = { type: 'Blog', otherId: route.params.blogId }
-    console.log(`likeData`, likeData)
+    logger.log(`likeData`, likeData)
     await likeService.createLike(likeData)
   } catch (error) {
     Pop.error(error, `no likes yet`)
@@ -84,8 +84,8 @@ async function getLikesByBlogId() {
     const blogId = route.params.blogId
     await likeService.getLikesByBlogId(blogId)
   } catch (error) {
-    Pop.error(error, `Coundnt get liker`)
-    logger.error(`conldnt get likers by id`, error)
+    Pop.error(error, `Could not get liker`)
+    logger.error(`could not  get likers by id`, error)
   }
 }
 
