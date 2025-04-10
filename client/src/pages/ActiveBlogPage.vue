@@ -13,6 +13,8 @@ const router = useRouter()
 
 const blog = computed(() => AppState.blog)
 const account = computed(() => AppState.account)
+const likerProfiles = computed(() => AppState.likerProfiles)
+
 
 onMounted(() => {
   getBlogById()
@@ -63,6 +65,7 @@ async function createLike() {
     await likeService.createLike(likeData)
   } catch (error) {
     Pop.error(error, `no likes yet`)
+    logger.error(`COULD NOT CRATE LIKE `)
   }
 }
 
@@ -72,7 +75,7 @@ async function getLikesByBlogId() {
     await likeService.getLikesByBlogId(blogId)
   } catch (error) {
     Pop.error(error, `Coundnt get liker`)
-    logger.error(`conldnt get likers by id`)
+    logger.error(`conldnt get likers by id`, error)
   }
 }
 
@@ -137,8 +140,9 @@ async function getLikesByBlogId() {
       </p>
     </div>
     <div>
-      <button @click="createLike()">like me
-      </button>
+      <button class="btn btn-orange rounded-pill" v-if="account" @click="createLike()">like
+        me</button>
+
     </div>
   </div>
   <!-- <Map(Components /> -->
