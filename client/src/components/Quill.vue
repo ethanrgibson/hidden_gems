@@ -5,9 +5,10 @@ import { Pop } from "@/utils/Pop.js";
 import { QuillEditor } from "@vueup/vue-quill";
 // import Quill from "quill";
 import { ref, useTemplateRef, } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const route = useRoute()
+const router = useRouter()
 
 const testString = ref('')
 // const blogContent = ref('')
@@ -20,13 +21,14 @@ const testString = ref('')
 let timer
 function updateAndSave() {
   clearTimeout(timer)
-  timer = setTimeout(() => {
-    logger.log('im working')
-    const editorContent = Qeditor.value.getContents()
-    const stringyContent = JSON.stringify(editorContent)
-    testString.value = stringyContent
-    saveBody(stringyContent)
-  }, 10000);
+  timer = setTimeout(saveQuillChanges, 30000);
+}
+async function saveQuillChanges() {
+  logger.log('im working')
+  const editorContent = Qeditor.value.getContents()
+  const stringyContent = JSON.stringify(editorContent)
+  testString.value = stringyContent
+  await saveBody(stringyContent)
 }
 
 async function saveBody(body) {
@@ -54,6 +56,15 @@ const Qeditor = useTemplateRef('Qeditor')
 //   // await blogsService.saveBlog(blogId, stringyContent)
 // }
 
+async function saveAndExit() {
+  try {
+    await saveQuillChanges()
+    router.push({ name: 'Active Blog', params: { blogId: route.params.blogId } })
+  }
+  catch (error) {
+    Pop.error(error, 'Could Not Save Blog');
+  }
+}
 
 </script>
 
@@ -81,7 +92,8 @@ const Qeditor = useTemplateRef('Qeditor')
     ]" />
 
   </form>
-  <button @click="saveBody()" class="btn btn-warning">SAVE</button>
+  <button @click="saveQuillChanges()" class="btn btn-warning">SAVE</button>
+  <button @click="saveAndExit()" class="btn btn-warning">Save and exit editor</button>
 </template>
 
 
