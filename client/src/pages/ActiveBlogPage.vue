@@ -158,7 +158,7 @@ async function getLikesByBlogId() {
 
     </div>
   </section>
-  <!-- <Map(Components /> -->
+  <MapComponents />
 
 
 </template>
