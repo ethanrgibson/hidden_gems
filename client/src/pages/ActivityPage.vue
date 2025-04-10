@@ -39,18 +39,20 @@ async function getAllBlogs() {
 <template>
   <section>
     <div v-if="route.params.activityName == 'camping'">
-      Waht's up campers?
-      <div>
-        <div v-for="b in campingBlogs" :key="b.id" class="col-md-12">
-          <BlogCard v-if="b.isPublished" :blogProp="b" />
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div v-for="b in campingBlogs" :key="b.id" class="col-md-9">
+            <BlogCard v-if="b.isPublished" :blogProp="b" />
+          </div>
         </div>
       </div>
     </div>
     <div v-if="route.params.activityName == 'hiking'">
-      Whats up hikers?
-      <div>
-        <div v-for="b in hikingBlogs" :key="b.id" class="col-md-12">
-          <BlogCard v-if="b.isPublished" :blogProp="b" />
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div v-for="b in hikingBlogs" :key="b.id" class="col-md-9">
+            <BlogCard v-if="b.isPublished" :blogProp="b" />
+          </div>
         </div>
       </div>
     </div>
@@ -82,8 +84,12 @@ async function getAllBlogs() {
           </div>
         </div>
       </div>
-      <div v-for="b in overLandingBlogs" :key="b.id" class="col-md-12">
-        <BlogCard v-if="b.isPublished" :blogProp="b" />
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+          <div v-for="b in overLandingBlogs" :key="b.id" class="col-md-9">
+            <BlogCard v-if="b.isPublished" :blogProp="b" />
+          </div>
+        </div>
       </div>
     </div>
 
