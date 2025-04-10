@@ -14,9 +14,12 @@ onMounted(() => {
 
 
 const account = computed(() => AppState.account)
+
 const blogs = computed(() => {
   if (filterCategory.value == 'all') {
     return AppState.blogs
+  } if (filterCategory.value == 'myBlogs') {
+    return AppState.blogs.filter(blog => blog.creatorId == account?.value.id)
   }
   return AppState.blogs.filter(blog => blog.category == filterCategory.value)
 
@@ -66,6 +69,7 @@ const filterCategory = ref('all')
               <option value="camping">Camping</option>
               <option value="hiking">Hiking</option>
               <option value="overlanding">Overland</option>
+              <option value="myBlogs">My Blogs</option>
             </select>
           </div>
         </div>
