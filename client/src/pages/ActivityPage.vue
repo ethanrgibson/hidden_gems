@@ -148,6 +148,8 @@ async function getFeaturedPictures() {
       </div>
     </div>
   </section>
+
+  <!-- TODO get the mapbox loaded in here -->
 </template>
 
 
