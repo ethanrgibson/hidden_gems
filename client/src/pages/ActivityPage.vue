@@ -27,6 +27,9 @@ const overLandingBlogs = computed(() => {
   return AppState.blogs.filter(blog => blog.category == 'overlanding')
 })
 
+const featuredPictures = computed(() => AppState.blogPictures)
+
+
 async function getAllBlogs() {
   try {
     await blogsService.getAllBlogs()
@@ -129,7 +132,9 @@ async function getFeaturedPictures() {
         </div>
       </div>
     </div>
-
+  </section>
+  <section>
+    {{ featuredPictures }}
   </section>
 </template>
 
