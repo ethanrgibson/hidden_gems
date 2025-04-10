@@ -1,5 +1,6 @@
 <script setup>
 import { AppState } from '@/AppState.js';
+import BlogCard from '@/components/BlogCard.vue';
 import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
@@ -45,23 +46,23 @@ const blogs = computed(() => {
           </div>
         </div>
       </div>
-      <div>
-        {{ blogs }}
-      </div>
-    </div>
-
-    <!-- NOTE This will be a constant on every page. Must be placed outside/below the 'v-ifs' -->
-    <div class="container-fluid bg-light">
-      <div class="row">
-        <div class="col-12">
-          <div class="my-3 p-2">
-            <div class="border-bottom border-warning">
-              <h2>Explore Top Blogs</h2>
+      <div class="container-fluid bg-light">
+        <div class="row">
+          <div class="col-12">
+            <div class="my-3 p-2">
+              <div class="border-bottom border-warning">
+                <h2>Explore Top Blogs</h2>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <div v-for="b in blogs" :key="b.id" class="col-md-12">
+        <BlogCard v-if="b.isPublished" :blogProp="b"/>
+      </div>
     </div>
+
+
   </section>
 </template>
 
