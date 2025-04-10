@@ -30,8 +30,9 @@ watch(blog, () => {
 watch(blog.value, () => {
   const hiddenEditor = new Quill('#hidden-editor')
   hiddenEditor.setContents(JSON.parse(blog.value.body))
-  blogContent.value = hiddenEditor.getSemanticHTML()
+  blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
 })
+
 onMounted(() => {
   getBlogById()
   // getLikesByBlogId()
