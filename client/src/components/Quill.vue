@@ -6,12 +6,12 @@ import { QuillEditor } from "@vueup/vue-quill";
 // import Quill from "quill";
 import { ref, useTemplateRef, } from "vue";
 import { useRoute, useRouter } from "vue-router";
-import { useRoute, useRouter } from "vue-router";
+// import { useRoute, useRouter } from "vue-router";
 
 
 const route = useRoute()
 const router = useRouter()
-const router = useRouter()
+// const router = useRouter()
 
 
 const testString = ref('')
@@ -57,12 +57,12 @@ async function saveBody(body) {
   }, 1000);
 }
 
-async function saveBody(body) {
-  const blogId = route.params.blogId
-  await blogsService.saveBlog(blogId, body)
-  logger.log('SAVING');
-  (active blog no display watcher)
-}
+// async function saveBody(body) {
+//   const blogId = route.params.blogId
+//   await blogsService.saveBlog(blogId, body)
+//   logger.log('SAVING');
+// (active blog no display watcher)
+// }
 
 const Qeditor = useTemplateRef('Qeditor')
 

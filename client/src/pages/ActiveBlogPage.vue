@@ -167,11 +167,11 @@ async function getLikesByBlogId() {
   </section>
   <!-- <Map(Components /> -->
 
-  =======
-  </div>
 
-  <!-- <MapComponents /> -->
-  >>>>>>> 8ae7059 (yea)
+
+
+
+
 
 </template>
 
