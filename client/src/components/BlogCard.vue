@@ -31,7 +31,7 @@ defineProps({
           </div>
         </div>
         <div class="pt-3 ">
-          <p><i>{{ blogProp.body }}</i></p>
+          <p><i>{{ blogProp.description }}</i></p>
         </div>
         <div class="d-flex justify-content-end">
           <p>{{ blogProp.createLike }}</p>

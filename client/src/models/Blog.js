@@ -12,6 +12,7 @@ export class Blog {
     this.createdAt = new Date(data.createdAt)
     this.updatedAt = new Date(data.updatedAt)
     this.createLike = data.createLike
+    this.description = data.description
 
 
   }

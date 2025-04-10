@@ -12,15 +12,17 @@ const route = useRoute()
 const router = useRouter()
 
 const blog = computed(() => AppState.blog)
-const account = computed(()=> AppState.account)
+
+const account = computed(() => AppState.account)
 
 const blogContent = ref('')
-
-watch(blog.value, ()=>{
+// need to get watch to convert the body back into html and then display it as raw html. 
+watch(blog, () => {
   const hiddenEditor = new Quill('#hidden-editor')
   hiddenEditor.setContents(JSON.parse(blog.value.body))
-  blogContent.value = hiddenEditor.getSemanticHTML()
+  blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
 })
+
 onMounted(() => {
   getBlogById()
 })
@@ -35,7 +37,7 @@ async function getBlogById() {
     logger.error(`couldn't get blog`, error)
   }
 }
-async function deleteBlog(){
+async function deleteBlog() {
   try {
     const confirmed = await Pop.confirm('Deleting blog', 'are you sure you would like to delete this blog?', 'yes', 'no')
     if (!confirmed) {
@@ -43,9 +45,9 @@ async function deleteBlog(){
     }
     const blogId = route.params.blogId
     await blogsService.deleteBlog(blogId)
-    router.push({ name: 'Campfire',})
+    router.push({ name: 'Campfire', })
   }
-  catch (error){
+  catch (error) {
     Pop.error(error);
   }
 }
@@ -55,9 +57,9 @@ async function publishBlog() {
     if (!confirmed) {
       return
     } const blogId = route.params.blogId
-      await blogsService.publishBlog(blogId)
+    await blogsService.publishBlog(blogId)
   }
-  catch (error){
+  catch (error) {
     Pop.error(error);
   }
 }
@@ -87,17 +89,15 @@ async function publishBlog() {
   </div>
   <hr>
   <div class="container p-2">
-    <div class="row d-flex">
+    <div class="row">
       <div class="col-12">
-        <div col-12 class="">
-          <span v-if="account?.id == blog?.creatorId">
-            <RouterLink :to="{ name: 'Edit Blog', params: { blogId: route.params.blogId } }">
+        <span v-if="account?.id == blog?.creatorId">
+          <RouterLink :to="{ name: 'Edit Blog', params: { blogId: route.params.blogId } }">
             <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
           </RouterLink>
-            <button @click="publishBlog()" class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
-            <button @click="deleteBlog()" class="shadow justify-content-end btn btn-orange ms-1">Delete</button>
-          </span>
-        </div>
+          <button @click="publishBlog()" class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
+          <button @click="deleteBlog()" class="shadow justify-content-end btn btn-orange ms-1">Delete</button>
+        </span>
       </div>
     </div>
   </div>
@@ -114,17 +114,18 @@ async function publishBlog() {
 
 
 
- 
 
-  <div v-if="blog" class="container text-shadow bg-light text-bg">
-    <div class="">
-      <div v-html="blogContent"></div>
-      <div id="hidden-editor" class="d-none"></div>
-      <p class=" my-5 text-shadow p-3 text-bg">
-        {{ blogContent }}
-      </p>
+  <section class="container">
+    <div class="row">
+      <div class="col-12">
+        <div id="hidden-editor" class="d-none"></div>
+        <div v-if="blog" class=" p-2 mb-2 shadow bg-light text-bg">
+          <div class="text-break" v-html="blogContent"></div>
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
+
   <!-- <MapComponents /> -->
 
 </template>

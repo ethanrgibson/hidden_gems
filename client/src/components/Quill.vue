@@ -9,7 +9,7 @@ import { useRoute } from "vue-router";
 const route = useRoute()
 
 const testString = ref('')
-// const blogContent = ref('')
+const blogContent = ref('')
 
 // watch(testString, ()=>{
 //   const hiddenEditor = new Quill('#hidden-editor')
@@ -57,7 +57,7 @@ const Qeditor = useTemplateRef('Qeditor')
   testString
   <div v-html="blogContent"></div>
   <div id="hidden-editor" class="d-none"></div>
-</div> -->
+</div>  -->
 
   <form @submit.prevent="saveBody()">
 
