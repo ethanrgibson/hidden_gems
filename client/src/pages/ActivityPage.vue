@@ -68,7 +68,7 @@ async function getFeaturedPictures() {
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div v-for="b in blogs" :key="b.id" class="col-md-9">
-            <BlogCard v-if="b.isPublished" :blogProp="b" />
+            <BlogCard :blogProp="b" />
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@ async function getFeaturedPictures() {
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div v-for="b in blogs" :key="b.id" class="col-md-9">
-            <BlogCard v-if="b.isPublished" :blogProp="b" />
+            <BlogCard :blogProp="b" />
           </div>
         </div>
       </div>
@@ -120,7 +120,7 @@ async function getFeaturedPictures() {
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div v-for="b in blogs" :key="b.id" class="col-md-9">
-            <BlogCard v-if="b.isPublished" :blogProp="b" />
+            <BlogCard :blogProp="b" />
           </div>
         </div>
       </div>

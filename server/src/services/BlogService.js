@@ -3,6 +3,8 @@ import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class BlogService {
 
+  // NOTE one function to check profileID against userID to get blogs that the profileID has created. 
+
   async createBlog(blogData) {
     const blog = await dbContext.Blogs.create(blogData)
     await blog.populate('creator', 'name picture')
@@ -13,7 +15,7 @@ class BlogService {
 
 
   async getAllBlogs(query) {
-    const blogs = await dbContext.Blogs.find(query)
+    const blogs = await dbContext.Blogs.find({ ...query, isPublished: true })
       .populate('creator', 'name picture')
       .populate('likeCount')
       .populate('location', 'name')
