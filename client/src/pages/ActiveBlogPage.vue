@@ -164,14 +164,9 @@ async function getLikesByBlogId() {
         me</button>
 
     </div>
-
-    <MapComponents />
-
-    =======
   </section>
+  <!-- <Map(Components /> -->
 
-  <!-- <MapComponents /> -->
-  >>>>>>> 8ae7059 (yea)
 
 </template>
 
