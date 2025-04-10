@@ -43,21 +43,21 @@ async function saveBody(body) {
   catch (error) {
     Pop.error(error, 'Could Not Save Blog');
   }
-=======
+
   timer = setTimeout(() => {
     logger.log('im working')
     const editorContent = Qeditor.value.getContents()
     const stringyContent = JSON.stringify(editorContent)
-    testString.value  = stringyContent
+    testString.value = stringyContent
     saveBody(stringyContent)
   }, 1000);
 }
 
-async function saveBody(body){
+async function saveBody(body) {
   const blogId = route.params.blogId
   await blogsService.saveBlog(blogId, body)
   logger.log('SAVING')
->>>>>>> 35bd451 (active blog no display watcher)
+    (active blog no display watcher)
 }
 
 const Qeditor = useTemplateRef('Qeditor')
