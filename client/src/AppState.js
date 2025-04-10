@@ -10,7 +10,12 @@ export const AppState = reactive({
   blogs: [],
   /** @type {import('./models/Blog.js').Blog} user info from the database*/
   blog: null,
+
   likerProfiles: [],
+
+  /** @type {import('./models/BlogPicture.js').BlogPicture[]} user info from the database*/
+
+  blogPictures: []
 
 })
 
