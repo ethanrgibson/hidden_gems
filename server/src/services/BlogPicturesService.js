@@ -39,6 +39,11 @@ class BlogPicturesService {
 
     return 'Picture Deleted'
   }
+
+  async getAllPictures() {
+    const pictures = dbContext.blogPictures.find()
+    return pictures
+  }
 }
 
 export const blogPicturesService = new BlogPicturesService()

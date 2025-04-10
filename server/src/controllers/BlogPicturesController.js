@@ -8,6 +8,7 @@ export class BlogPicturesController extends BaseController {
 
     super('api/pictures')
     this.router
+      .get('', this.getAllPictures)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.uploadPictures)
       .delete('/:blogPictureId', this.deletePicture)
@@ -39,5 +40,16 @@ export class BlogPicturesController extends BaseController {
       next(error)
     }
   }
+
+  async getAllPictures(request, response, next) {
+
+    try {
+      const pictures = await blogPicturesService.getAllPictures()
+      response.send(pictures)
+    } catch (error) {
+      next(error)
+    }
+  }
+
 
 }

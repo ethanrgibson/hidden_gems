@@ -2,7 +2,6 @@
 import { AppState } from '@/AppState.js';
 import BlogCard from '@/components/BlogCard.vue';
 import ExploreTopBlogsComponent from '@/components/ExploreTopBlogsComponent.vue';
-import MapComponents from '@/components/MapComponents.vue';
 import { blogPicturesService } from '@/services/BlogPicturesService.js';
 import { blogsService } from '@/services/BlogsService.js';
 import { Pop } from '@/utils/Pop.js';
@@ -12,6 +11,7 @@ import { useRoute } from 'vue-router';
 
 onMounted(() => {
   getAllBlogs()
+  getFeaturedPictures()
 })
 
 
