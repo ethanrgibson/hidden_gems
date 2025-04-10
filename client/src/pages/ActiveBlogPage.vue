@@ -172,7 +172,7 @@ async function getLikesByBlogId() {
 
     </section>
   </section>
-  <!-- <Map(Components /> -->
+  <MapComponents />
 
 
 
