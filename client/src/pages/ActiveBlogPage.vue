@@ -1,6 +1,7 @@
 <script setup>
 import { AppState } from '@/AppState.js';
 import { blogsService } from '@/services/BlogsService.js';
+import { likeService } from '@/services/LikeService.js';
 import { logger } from '@/utils/Logger.js';
 import Quill from "quill";
 import { Pop } from '@/utils/Pop.js';
@@ -22,9 +23,12 @@ watch(blog, () => {
   hiddenEditor.setContents(JSON.parse(blog.value.body))
   blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
 })
+const likerProfiles = computed(() => AppState.likerProfiles)
+
 
 onMounted(() => {
   getBlogById()
+  getLikesByBlogId()
 })
 
 async function getBlogById() {
@@ -58,13 +62,36 @@ async function publishBlog() {
       return
     } const blogId = route.params.blogId
     await blogsService.publishBlog(blogId)
+    await blogsService.publishBlog(blogId)
   }
   catch (error) {
-    Pop.error(error);
+  catch (error) {
+      Pop.error(error);
+    }
   }
+
+  async function createLike() {
+    try {
+      const likeData = { type: 'Blog', otherId: route.params.blogId }
+      console.log(`likeData`, likeData)
+      await likeService.createLike(likeData)
+    } catch (error) {
+      Pop.error(error, `no likes yet`)
+      logger.error(`COULD NOT CRATE LIKE `)
+    }
+  }
+
+  async function getLikesByBlogId() {
+    try {
+      const blogId = route.params.blogId
+      await likeService.getLikesByBlogId(blogId)
+    } catch (error) {
+      Pop.error(error, `Coundnt get liker`)
+      logger.error(`conldnt get likers by id`, error)
+    }
+  }
+
 }
-
-
 </script>
 
 
@@ -81,6 +108,7 @@ async function publishBlog() {
           </span>
           <img class="creator-img" :src="blog.creator.picture" alt="">
           <div class=" text-end fs-1 p-3 text-danger">
+            <span>0</span>
             <i class="mdi mdi-campfire"></i>
           </div>
         </div>
@@ -124,9 +152,14 @@ async function publishBlog() {
         </div>
       </div>
     </div>
-  </section>
+    <div>
+      <button class="btn btn-orange rounded-pill" v-if="account" @click="createLike()">like
+        me</button>
 
-  <!-- <MapComponents /> -->
+    </div>
+    </div>
+    <!-- <Map(Components /> -->
+
 
 </template>
 
