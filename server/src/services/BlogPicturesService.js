@@ -41,7 +41,8 @@ class BlogPicturesService {
   }
 
   async getAllPictures() {
-    const pictures = dbContext.blogPictures.find()
+    const pictures = await dbContext.blogPictures.aggregate([{ $sample: { size: 3 } }])
+
     return pictures
   }
 }

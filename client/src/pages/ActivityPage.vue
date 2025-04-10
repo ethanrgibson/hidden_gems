@@ -136,13 +136,14 @@ async function getFeaturedPictures() {
   <section>
     <div class="container">
       <div class="row">
-        <div v-for="picture in featuredPictures" :key="picture.id" class="col-md-4 p-0">
-          <div>
-            <img :src="picture.imgUrl" alt="" class="img-fluid">
+        <!-- TODO need to add limiter in backend so we only get 6  r a n d o m  pictures when the get request is called -->
+          <div v-for="picture in featuredPictures" :key="picture.id" class="col-md-4 p-0">
+            <div>
+              <img :src="picture.imgUrl" alt="" class="img-fluid">
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </section>
 </template>
 
