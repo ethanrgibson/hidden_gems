@@ -16,6 +16,7 @@
     "@vueup/vue-quill": "^1.2.0",
     "axios": "^1.8.4",
     "bootstrap": "5.3.3",
+    "mapbox-gl": "^3.11.0",
     "quill": "^2.0.3",
     "socket.io-client": "4.7.5",
     "vue": "^3.4.37",
