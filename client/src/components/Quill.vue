@@ -58,7 +58,7 @@ async function saveBody(body) {
   const blogId = route.params.blogId
   await blogsService.saveBlog(blogId, body)
   logger.log('SAVING')
->>>>>>> 35bd451 (active blog no display watcher)
+    (active blog no display watcher)
 }
 
 const Qeditor = useTemplateRef('Qeditor')
