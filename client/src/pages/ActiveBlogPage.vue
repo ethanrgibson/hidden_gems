@@ -157,7 +157,8 @@ async function getLikesByBlogId() {
     </div>
 
     <div>
-      <button class="btn btn-orange rounded-pill" v-if="account" @click="createLike()">like
+      <!--NOTE JUSTIN YOUR STUFF IS HERE::: v-if="account" @click="createLike()" -->
+      <button class="btn btn-orange rounded-pill" v-if="account">like
         me</button>
 
     </div>
