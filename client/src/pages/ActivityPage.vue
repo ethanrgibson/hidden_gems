@@ -1,9 +1,21 @@
 <script setup>
+import { AppState } from '@/AppState.js';
+import { computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 
+onMounted
+
 
 const route = useRoute()
+
+
+const blogs = computed(() => {
+
+  return AppState.blogs.filter(blog => blog.category == 'overlanding')
+
+})
+
 
 </script>
 
@@ -33,15 +45,23 @@ const route = useRoute()
           </div>
         </div>
       </div>
-
+      <div>
+        {{ blogs }}
+      </div>
     </div>
-    <!-- <div class="container-fluid">
+
+    <!-- NOTE This will be a constant on every page. Must be placed outside/below the 'v-ifs' -->
+    <div class="container-fluid bg-light">
       <div class="row">
-        <div class="col-md-12">
-          hello
+        <div class="col-12">
+          <div class="my-3 p-2">
+            <div class="border-bottom border-warning">
+              <h2>Explore Top Blogs</h2>
+            </div>
+          </div>
         </div>
       </div>
-    </div> -->
+    </div>
   </section>
 </template>
 
