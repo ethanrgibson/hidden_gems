@@ -32,6 +32,11 @@ const routes = [
     component: loadPage('AboutPage')
   },
   {
+    path: '/activity/:activityName',
+    name: 'Activity',
+    component: loadPage('ActivityPage')
+  },
+  {
     path: '/test',
     name: 'Test',
     component: loadPage('TestPage')
