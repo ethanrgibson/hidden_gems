@@ -11,6 +11,10 @@ export const AppState = reactive({
   /** @type {import('./models/Blog.js').Blog} user info from the database*/
   blog: null,
 
+  /** @type {import('./models/Likes.js').Like[]} user info from the database*/
+  like: null,
+
+
   likerProfiles: [],
   mapboxgl: [],
 

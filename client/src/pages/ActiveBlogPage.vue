@@ -23,6 +23,7 @@ watch(blog, () => {
   hiddenEditor.setContents(JSON.parse(blog.value.body))
   blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
 })
+
 const likerProfiles = computed(() => AppState.likerProfiles)
 
 
@@ -76,7 +77,7 @@ async function createLike() {
     await likeService.createLike(likeData)
   } catch (error) {
     Pop.error(error, `no likes yet`)
-    logger.error(`COULD NOT CRATE LIKE `)
+    logger.error(`COULD NOT CREATE LIKE `)
   }
 }
 
@@ -106,7 +107,7 @@ async function getLikesByBlogId() {
           </span>
           <img class="creator-img" :src="blog.creator.picture" alt="">
           <div class=" text-end fs-1 p-3 text-danger">
-            <span>0</span>
+            <span>{{ blog.likeCount }}</span>
             <i class="mdi mdi-campfire"></i>
           </div>
         </div>
@@ -152,8 +153,8 @@ async function getLikesByBlogId() {
     </div>
     <div>
       <!--NOTE JUSTIN YOUR STUFF IS HERE::: v-if="account" @click="createLike()" -->
-      <button class="btn btn-orange rounded-pill" v-if="account">like
-        me</button>
+      <button @click="createLike()" class="btn btn-orange rounded-pill" v-if="account">Like
+        Me</button>
 
     </div>
   </section>
