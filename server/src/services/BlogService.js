@@ -21,6 +21,8 @@ class BlogService {
       .populate('location', 'name')
     return blogs
   }
+ 
+ 
 
 
   async getBlogById(blogId) {

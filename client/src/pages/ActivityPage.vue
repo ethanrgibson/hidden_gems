@@ -12,7 +12,7 @@ const route = useRoute()
 
 
 watch(route, () => {
-  getAllBlogs()
+  getAllBlogsByCategory()
   getFeaturedPictures()
 }, { immediate: true })
 
@@ -20,7 +20,7 @@ const blogs = computed(() => AppState.blogs)
 const featuredPictures = computed(() => AppState.blogPictures)
 
 
-async function getAllBlogs() {
+async function getAllBlogsByCategory() {
 
   const activityName = route.params.activityName
 

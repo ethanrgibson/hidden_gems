@@ -42,7 +42,7 @@ export class BlogsController extends BaseController {
       next(error)
     }
   }
-
+  
   async getBlogById(request, response, next) {
     try {
       const blogId = request.params.blogId
@@ -52,7 +52,7 @@ export class BlogsController extends BaseController {
       next(error)
     }
   }
-
+  
   async editBlogById(request, response, next) {
     try {
       const blogId = request.params.blogId
@@ -64,8 +64,8 @@ export class BlogsController extends BaseController {
       next(error)
     }
   }
-
-
+  
+  
   async deleteBlogById(request, response, next) {
     try {
       const blogId = request.params.blogId
@@ -76,7 +76,7 @@ export class BlogsController extends BaseController {
       next(error)
     }
   }
-
+  
   async getBlogPicturesByBlogId(request, response, next) {
     try {
       const blogId = request.params.blogId
@@ -86,6 +86,6 @@ export class BlogsController extends BaseController {
       next(error)
     }
   }
-
-
+  
+  
 }

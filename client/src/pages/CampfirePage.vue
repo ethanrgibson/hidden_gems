@@ -77,7 +77,7 @@ const filterCategory = ref('all')
           <div class="row">
             <!-- NOTE copying our Code Emperor Jake's style of using the first character -->
             <div v-for="b in blogs" :key="b.id" class="col-12 ">
-              <BlogCard v-if="b.isPublished || account?.id == b.creatorId" :blogProp="b" />
+              <BlogCard :blogProp="b" />
             </div>
           </div>
         </div>
@@ -85,6 +85,8 @@ const filterCategory = ref('all')
     </div>
   </section>
 </template>
+
+<!-- v-if="b.isPublished || account?.id == b.creatorId" -->
 
 
 <style lang="scss" scoped>
