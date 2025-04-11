@@ -13,7 +13,7 @@ export class Blog {
     this.updatedAt = new Date(data.updatedAt)
     this.createLike = data.createLike
     this.description = data.description
-    this.likeCount = data.likeCount
+
 
   }
 }
