@@ -42,6 +42,7 @@ class BlogsService {
     logger.log(response.data)
     const blog = new Blog(response.data)
     AppState.blogs.push(blog)
+    return (blog)
   }
   async getAllBlogs() {
     const response = await api.get('api/blogs')
@@ -50,6 +51,7 @@ class BlogsService {
     AppState.blogs = blogs
   }
   async getBlogById(blogId) {
+    AppState.blog = null
     const response = await api.get(`api/blogs/${blogId}`)
     logger.log(response.data)
     AppState.blog = new Blog(response.data)

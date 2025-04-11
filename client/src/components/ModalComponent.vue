@@ -4,7 +4,10 @@ import { logger } from '@/utils/Logger.js';
 import { Pop } from '@/utils/Pop.js';
 import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.js';
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 
+
+const router = useRouter()
 const editableBlogData = ref({
   title: '',
   coverImg: '',
@@ -16,8 +19,8 @@ const editableBlogData = ref({
 
 async function createBlog() {
   try {
-    const blogData = editableBlogData.value
-    await blogsService.createBlog(blogData)
+
+    const blog = await blogsService.createBlog(editableBlogData.value)
     editableBlogData.value = {
       title: '',
       coverImg: '',
@@ -26,6 +29,8 @@ async function createBlog() {
       category: 'camping',
     }
     Modal.getOrCreateInstance('#blogModal').hide()
+    router.push({ name: 'Edit Blog', params: { blogId: blog.id } })
+
   }
   catch (error) {
     Pop.error(error, 'could not create blog');
