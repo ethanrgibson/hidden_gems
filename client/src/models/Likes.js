@@ -1,4 +1,4 @@
-class Like {
+export class Like {
   constructor(data) {
     this.otherId = data.otherId
     this.type = data.type
