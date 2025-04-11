@@ -50,6 +50,7 @@ class BlogsService {
     AppState.blogs = blogs
   }
   async getBlogById(blogId) {
+    AppState.blog = null
     const response = await api.get(`api/blogs/${blogId}`)
     logger.log(response.data)
     AppState.blog = new Blog(response.data)

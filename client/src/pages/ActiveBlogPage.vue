@@ -5,7 +5,7 @@ import { likeService } from '@/services/LikeService.js';
 import { logger } from '@/utils/Logger.js';
 import Quill from "quill";
 import { Pop } from '@/utils/Pop.js';
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
 const route = useRoute()
@@ -23,7 +23,7 @@ watch(blog, () => {
   hiddenEditor.setContents(JSON.parse(blog.value.body))
   blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
 })
-const likerProfiles = computed(() => AppState.likerProfiles)
+// const likerProfiles = computed(() => AppState.likerProfiles)
 
 
 
@@ -31,6 +31,10 @@ onMounted(() => {
   getBlogById()
   getLikesByBlogId()
 })
+
+// onUnmounted(() => {
+//   AppState.blog = null
+// })
 
 async function getBlogById() {
   try {
@@ -121,7 +125,10 @@ async function getLikesByBlogId() {
           <RouterLink :to="{ name: 'Edit Blog', params: { blogId: route.params.blogId } }">
             <button class="shadow justify-content-end btn btn-orange ms-1">Edit</button>
           </RouterLink>
-          <button @click="publishBlog()" class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
+          <div>
+            <button v-if="!blog?.isPublished" @click="publishBlog()"
+              class="shadow justify-content-end btn btn-orange ms-1">Publish</button>
+          </div>
           <button @click="deleteBlog()" class="shadow justify-content-end btn btn-orange ms-1">Delete</button>
         </span>
       </div>
