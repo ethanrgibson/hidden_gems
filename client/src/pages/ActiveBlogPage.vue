@@ -23,6 +23,7 @@ watch(blog, () => {
   hiddenEditor.setContents(JSON.parse(blog.value.body))
   blogContent.value = hiddenEditor.getSemanticHTML().replaceAll('&nbsp;', ' ')
 })
+
 const likerProfiles = computed(() => AppState.likerProfiles)
 
 
@@ -152,8 +153,8 @@ async function getLikesByBlogId() {
     </div>
     <div>
       <!--NOTE JUSTIN YOUR STUFF IS HERE::: v-if="account" @click="createLike()" -->
-      <button @click="createLike()" class="btn btn-orange rounded-pill" v-if="account">like
-        me</button>
+      <button @click="createLike()" class="btn btn-orange rounded-pill" v-if="account">Like
+        Me</button>
 
     </div>
   </section>

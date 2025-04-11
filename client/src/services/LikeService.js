@@ -10,8 +10,8 @@ class LikeService {
   async createLike(likeData) {
     const response = await api.post(`api/likes`, likeData)
     logger.log(`Tryng to get like`, response.data)
-    const like = new Like (response.data)
-    AppState.likerProfiles.push(like)
+    const like = new Like(response.data)
+    AppState.like.push(like)
 
   }
 
