@@ -4,6 +4,9 @@ import { Blog } from "@/models/Blog.js"
 import { AppState } from "@/AppState.js"
 
 class BlogsService {
+  getMyBlogs() {
+    throw new Error('Method not implemented.')
+  }
   async saveBlog(blogId, blogBody) {
     const blogToUpdate = AppState.blog
     logger.log(blogToUpdate)
