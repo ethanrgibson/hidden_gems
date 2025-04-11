@@ -39,6 +39,12 @@ class BlogPicturesService {
 
     return 'Picture Deleted'
   }
+
+  async getAllPictures() {
+    const pictures = await dbContext.blogPictures.aggregate([{ $sample: { size: 3 } }])
+
+    return pictures
+  }
 }
 
 export const blogPicturesService = new BlogPicturesService()

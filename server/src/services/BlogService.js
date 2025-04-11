@@ -3,22 +3,26 @@ import { BadRequest, Forbidden } from "../utils/Errors.js"
 
 class BlogService {
 
+  // NOTE one function to check profileID against userID to get blogs that the profileID has created. 
+
   async createBlog(blogData) {
     const blog = await dbContext.Blogs.create(blogData)
     await blog.populate('creator', 'name picture')
     await blog.populate('location', 'name')
-    await blog.populate('blogPictures','imgUrl' )
+    await blog.populate('blogPictures', 'imgUrl')
     return blog
   }
 
 
-  async getAllBlogs() {
-    const blogs = await dbContext.Blogs.find()
+  async getAllBlogs(query) {
+    const blogs = await dbContext.Blogs.find({ ...query, isPublished: true })
       .populate('creator', 'name picture')
       .populate('likeCount')
       .populate('location', 'name')
     return blogs
   }
+ 
+ 
 
 
   async getBlogById(blogId) {
@@ -26,7 +30,7 @@ class BlogService {
       .populate('creator', 'name picture')
       .populate('likeCount')
       .populate('location', 'name')
-      .populate('blogPictures','imgUrl' )
+      .populate('blogPictures', 'imgUrl')
 
     if (blog == null) {
       throw new BadRequest('BLOG DOES NOT EXIST')
