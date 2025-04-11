@@ -2,7 +2,7 @@
 import { logger } from "@/utils/Logger.js"
 import { api } from "./AxiosService.js"
 import { AppState } from "@/AppState.js"
-import { Like, LikerProfile } from "@/models/Likes.js"
+import { LikerProfile } from "@/models/Likes.js"
 
 
 class LikeService {
@@ -10,8 +10,8 @@ class LikeService {
   async createLike(likeData) {
     const response = await api.post(`api/likes`, likeData)
     logger.log(`Tryng to get like`, response.data)
-    const like = new Like(response.data)
-    AppState.like.push(like)
+    const like = new LikerProfile(response.data)
+    AppState.likerProfiles.push(like)
 
   }
 
