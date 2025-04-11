@@ -32,6 +32,7 @@ onMounted(() => {
   getLikesByBlogId()
 })
 
+// NOTE THIS BREAKS THE MAIN BLOG
 // onUnmounted(() => {
 //   AppState.blog = null
 // })

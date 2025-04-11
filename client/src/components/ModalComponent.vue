@@ -6,6 +6,7 @@ import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.js';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
+
 const router = useRouter()
 const editableBlogData = ref({
   title: '',
@@ -18,8 +19,8 @@ const editableBlogData = ref({
 
 async function createBlog() {
   try {
-    const blogData = editableBlogData.value
-    await blogsService.createBlog(blogData)
+
+    const blog = await blogsService.createBlog(editableBlogData.value)
     editableBlogData.value = {
       title: '',
       coverImg: '',
@@ -28,7 +29,7 @@ async function createBlog() {
       category: 'camping',
     }
     Modal.getOrCreateInstance('#blogModal').hide()
-    router.push({ name: '' })
+    router.push({ name: 'Edit Blog', params: { blogId: blog.id } })
 
   }
   catch (error) {
